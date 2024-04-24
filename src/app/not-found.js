@@ -23,7 +23,7 @@ export default function NotFound() {
         dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light
         "
         >
-          Về Trang Chủ
+          Trở Về Trang Chủ
         </Link>
       </div>
     </main>

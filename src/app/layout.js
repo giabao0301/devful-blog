@@ -51,6 +51,9 @@ export const metadata = {
     title: siteMetadata.title,
     images: [siteMetadata.socialBanner],
   },
+  verification: {
+    google: siteMetadata["google-site-verification"],
+  },
 };
 
 export default function RootLayout({ children }) {
