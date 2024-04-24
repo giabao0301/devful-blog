@@ -3,11 +3,13 @@ import Link from "next/link";
 import Logo from "./Logo";
 import {
   DribbbleIcon,
+  FacebookIcon,
   GithubIcon,
   LinkedinIcon,
   MoonIcon,
   SunIcon,
   TwitterIcon,
+  YoutubeIcon,
 } from "../Icons";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { useState } from "react";
@@ -96,7 +98,16 @@ const Header = () => {
           Liên hệ
         </Link>
       </nav>
-      <div className=" hidden sm:flex items-center">
+      <div className="hidden sm:flex items-center">
+        <a
+          href={siteMetadata.facebook}
+          rel="noopener noreferrer"
+          className="inline-block w-8 h-8 mr-4"
+          aria-label="Reach out to me via Facebook"
+          target="_blank"
+        >
+          <FacebookIcon className="hover:scale-125 transition-all ease duration-200" />
+        </a>
         <a
           href={siteMetadata.linkedin}
           rel="noopener noreferrer"
@@ -105,15 +116,6 @@ const Header = () => {
           target="_blank"
         >
           <LinkedinIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
-        <a
-          href={siteMetadata.twitter}
-          rel="noopener noreferrer"
-          className="inline-block w-6 h-6 mr-4"
-          aria-label="Reach out to me via Twitter"
-          target="_blank"
-        >
-          <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
         <a
           href={siteMetadata.github}
@@ -125,13 +127,13 @@ const Header = () => {
           <GithubIcon className="  hover:scale-125 transition-all ease duration-200 dark:fill-light" />
         </a>
         <a
-          href={siteMetadata.dribbble}
+          href={siteMetadata.youtube}
           rel="noopener noreferrer"
-          className="inline-block w-6 h-6 mr-4"
-          aria-label="Check my profile on Dribbble"
+          className="inline-block w-8 h-8 mr-4"
+          aria-label="Check my profile on Youtube"
           target="_blank"
         >
-          <DribbbleIcon className="hover:scale-125 transition-all ease duration-200" />
+          <YoutubeIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>
     </header>

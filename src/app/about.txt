@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Orienta
+- Font Author: Copyright 2012 The Orienta Project Authors (https://github.com/etunni/orienta) with Reserved Font Name 'Orienta'
+- Font Source: https://fonts.gstatic.com/s/orienta/v15/PlI9FlK4Jrl5Y9zNeyeo9HRFhcU.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
