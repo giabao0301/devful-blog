@@ -17,6 +17,7 @@ const siteMetadata = {
   youtube: "https://youtube.com/",
   linkedin: "https://www.linkedin.com/in/bao-trinh-a9352728b/",
   locale: "vi_VN",
+  gmail: "https://mail.google.com/",
   "google-site-verification": "FinXj0OtjYg0D0ib9ZORm2MdGh_DwIy0F38a52PR8XE",
 };
 

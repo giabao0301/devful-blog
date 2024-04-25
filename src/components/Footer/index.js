@@ -38,7 +38,7 @@ const Footer = () => {
           type="email"
           placeholder="Nhập email của bạn"
           {...register("email", { required: true, maxLength: 80 })}
-          className="w-full bg-transparent pl-4 sm:pl-0 text-dark focus:border-dark focus:ring-0 border-0 border-b mr-2 pb-1"
+          className="w-full bg-transparent pl-4 sm:pl-0 text-dark focus:border-dark focus:ring-0 border-0  mr-2 pb-1"
         />
 
         <input
@@ -87,18 +87,18 @@ const Footer = () => {
         </a>
       </div>
 
-      <div className="w-full  mt-16 md:mt-24 relative font-medium border-t border-solid border-light py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
+      <div className="w-full  mt-16 md:mt-24 relative font-medium  py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
         <span className="text-center">
           &copy;2024 Devful. All rights reserved.
         </span>
-        <Link
+        {/* <Link
           href="/sitemap.xml"
           className="text-center underline my-4 md:my-0"
         >
           sitemap.xml
-        </Link>
+        </Link> */}
         <div className="text-center">
-          Made with &hearts; by
+          Made with &hearts; by &nbsp;
           <a
             href="https://devdreaming.com"
             className="underline"
