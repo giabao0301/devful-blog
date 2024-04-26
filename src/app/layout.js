@@ -5,6 +5,7 @@ import { Inter, Manrope } from "next/font/google";
 import Header from "@/src/components/Header";
 import Footer from "../components/Footer";
 import siteMetadata from "../utils/siteMetaData";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,6 +71,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-HJHPW906ZE" />
     </html>
   );
 }
