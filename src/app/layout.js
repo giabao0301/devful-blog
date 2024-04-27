@@ -54,6 +54,9 @@ export const metadata = {
   },
   verification: {
     google: siteMetadata["google-site-verification"],
+    other: {
+      "msvalidate.01": siteMetadata["msvalidate.01"],
+    },
   },
 };
 

@@ -19,6 +19,7 @@ const siteMetadata = {
   locale: "vi_VN",
   gmail: "https://mail.google.com/",
   "google-site-verification": "FinXj0OtjYg0D0ib9ZORm2MdGh_DwIy0F38a52PR8XE",
+  "msvalidate.01": "0CD60E21346D96DA7A2977CBA531A989",
 };
 
 module.exports = siteMetadata;
