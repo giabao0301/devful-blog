@@ -80,7 +80,7 @@ const Header = () => {
           Giới thiệu
         </Link>
         <Link href="/contact" className="mx-2">
-          Liện hệ
+          Liên hệ
         </Link>
       </nav>
 
