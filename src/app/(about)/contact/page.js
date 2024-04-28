@@ -5,7 +5,7 @@ import contactImage from "../../../../public/contact.jpg";
 
 export const metadata = {
   title: "Liên hệ",
-  description: `Contact me through the form available on this page or email me at ${siteMetadata.email}`,
+  description: `Liên hệ thông qua email này: ${siteMetadata.email}`,
 };
 
 export default function Contact() {
@@ -24,7 +24,7 @@ export default function Contact() {
       </div>
       <div className="w-full  md:w-3/5 flex flex-col items-start justify-center px-5 xs:px-10 md:px-16 pb-8">
         <h2 className="font-bold capitalize  text-2xl xs:text-3xl sm:text-4xl">
-          Let's Connect!
+          Hãy kết nối nào!
         </h2>
         <ContactForm />
       </div>

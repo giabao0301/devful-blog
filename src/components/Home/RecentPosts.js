@@ -15,7 +15,7 @@ const RecentPosts = ({ blogs }) => {
           href="/categories/all"
           className="inline-block font-medium text-accent dark:text-accentDark underline underline-offset-2      text-base md:text-lg"
         >
-          xem tất cả
+          Xem tất cả
         </Link>
       </div>
 

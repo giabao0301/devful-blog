@@ -7,213 +7,357 @@ updatedAt: "2024-04-26"
 author: "Gia Bao"
 isPublished: true
 tags:
-- productivity
+- SEO
 ---
 
-# SEO là gì?
+## SEO là gì?
 
-Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
+SEO (tối ưu hóa công cụ tìm kiếm) là quá trình cải thiện hiệu suất, trải nghiệm và quyền hạn của trang web của bạn để nó có thể đạt được khả năng hiển thị tốt hơn trong các công cụ tìm kiếm như [Google](https://google.com).
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
 
-We get lots of complaints about it actually, with people regularly asking us things like:
+Cụ thể, SEO là xếp hạng cao hơn trong kết quả tìm kiếm không phải trả tiền. Kết quả **không** được trả tiền hoặc được tài trợ.
 
-> Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
-> We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
-
-The `@tailwindcss/typography` plugin is our attempt to give you what you _actually_ want, without any of the downsides of doing something stupid like disabling our base styles.
-
-It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
-
-```html {1-3,4} title="index.html" caption="This is index.html file" showLineNumbers /will/
-<article className="prose">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
-  <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
-  </p>
-  <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
-  </p>
-</article>
-```
-
-For more information about how to use the plugin and the features it includes, [read the documentation](https://github.com/tailwindcss/typography/blob/master/README.md).
-
----
-
-## What to expect from here on out
-
-What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like **bold text**, unordered lists, ordered lists, code blocks, block quotes, _and even italics_. `<h3>This is inline code</h3>{:html}`
-
-It's important to cover all of these use cases for a few reasons:
-
-1.  We want everything to look good out of the box.
-2.  Really just the first reason, that's the whole point of the plugin.
-3.  Here's a third pretend reason though a list with three items looks more realistic than a list with two items.
-
-Now we're going to try out another header style.
-
-### Typography should be easy
-
-So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
-
-Something a wise person once told me about typography is:
-
-> Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.
-
-It's probably important that images look okay here by default as well:
+Đây là kết quả của cả hai loại tìm kiếm trả tiền (paid) và tìm kiếm không trả tiền (organic):
 
 <Image
-  src="/blogs/c-d-x-PDX_a_82obo-unsplash.jpg"
-  width="718"
+src="/blogs/paid-vs-organic-search-results.png"
+alt="Paid vs Organic Search Results"
+ width="718"
   height="404"
-  alt="Image"
   sizes="100vw"
 />
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+Kết quả phải trả tiền (paid) là kết quả mà nhà quảng cáo trả tiền thông qua [Google Ads](https://ads.google.com/intl/vi_vn/start/overview-ha/?subid=vn-vi-ha-awa-bk-c-c00!o3~CjwKCAjwxLKxBhA7EiwAXO0R0FrsqieqCrmGc6f8NMVFXcOqwy_GZyQt8SXHWDWNtZwsHG3pbaDXFhoC9g4QAvD_BwE~135476288343~kwd-128965020~17294136620~598569730462&gad_source=1&gclid=CjwKCAjwxLKxBhA7EiwAXO0R0FrsqieqCrmGc6f8NMVFXcOqwy_GZyQt8SXHWDWNtZwsHG3pbaDXFhoC9g4QAvD_BwE&gclsrc=aw.ds). Hệ thống xếp hạng hoàn toàn tách biệt với hệ thống được sử dụng cho kết quả không phải trả tiền.
 
-Now I'm going to show you an example of an unordered list to make sure that looks good, too:
+Kết quả không phải trả tiền (organic) của Google được xếp hạng dựa trên mức độ liên quan, chất lượng, khả năng sử dụng và ngữ cảnh. Và không phải là “pay to play”.
 
-- So here is the first item in this list.
-- In this example we're keeping the items short.
-- Later, we'll use longer, more complex list items.
+SEO trở nên quan trọng trong kết quả không phải trả tiền.
 
-And that's the end of this section.
 
-## What if we stack headings?
+## Tại sao SEO quan trọng
 
-### We should make sure that looks good, too.
+SEO rất quan trọng vì nó có thể mang lại nhiều lưu lượng truy cập, khách hàng tiềm năng, khách hàng và doanh thu hơn cho doanh nghiệp của bạn. Ngay cả các chiến lược SEO cơ bản cũng có thể mang lại lợi tức đầu tư rất lớn.
 
-Sometimes you have headings directly underneath each other. In those cases you often have to undo the top margin on the second heading because it usually looks better for the headings to be closer together than a paragraph followed by a heading should be.
+Có hàng tỷ lượt tìm kiếm trên Google mỗi ngày. Và 45,1% người dùng máy tính để bàn nhấp vào kết quả không phải trả tiền, theo báo cáo [State of Search 2023](https://www.semrush.com/blog/state-of-search-2023/) của Semrush.
 
-### When a heading comes after a paragraph …
+(Thông thường, thứ hạng của bạn càng cao thì bạn càng nhận được nhiều nhấp chuột.)
 
-When a heading comes after a paragraph, we need a bit more space, like I already mentioned above. Now let's see what a more complex list would look like.
+Để so sánh, chỉ có 1,8% người dùng máy tính để bàn nhấp vào kết quả trả phí. Mặc dù quảng cáo thường ở đầu trang.
 
-- **I often do this thing where list items have headings.**
+Và khi SEO được thực hiện đúng, kết quả có thể tăng lên nhanh chóng.
 
-  For some reason I think this looks cool which is unfortunate because it's pretty annoying to get the styles right.
+Theo công cụ Organic Research của Semrush, Amazon đã nhận được 546,3 triệu lượt truy cập từ người dùng Google ở ​​Hoa Kỳ vào tháng 11 năm 2023.
 
-  I often have two or three paragraphs in these list items, too, so the hard part is getting the spacing between the paragraphs, list item heading, and separate list items to all make sense. Pretty tough honestly, you could make a strong argument that you just shouldn't write this way.
+Công ty sẽ phải tốn khoảng 336,9 triệu USD để có được lưu lượng truy cập lớn như vậy thông qua Google Ads.
 
-- **Since this is a list, I need at least two items.**
+<Image
+  src="/blogs/amazon-organic-traffic.png"
+  alt="Amazon Organic Traffic"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-  I explained what I'm doing already in the previous list item, but a list wouldn't be a list if it only had one item, and we really want this to look realistic. That's why I've added this second list item so I actually have something to look at when writing the styles.
+Và không giống như lưu lượng truy cập phải trả tiền, những khách truy cập không phải trả tiền này đến dù Amazon có tích cực chạy quảng cáo hay không.
 
-- **It's not a bad idea to add a third item either.**
+Nói rõ hơn: SEO là một quá trình liên tục cần có công sức. Nhưng một khi bạn xếp hạng cho một nhóm từ khóa, thứ hạng của bạn thường ổn định phần nào theo thời gian.
 
-  I think it probably would've been fine to just use two items but three is definitely not worse, and since I seem to be having no trouble making up arbitrary things to type, I might as well include it.
+Điều này có thể giúp bạn:
 
-After this sort of list I usually have a closing statement or paragraph, because it kinda looks weird jumping right to a heading.
+- Nhận được nhiều lưu lượng truy cập và chuyển đổi không phải trả tiền hơn (ví dụ: đơn đặt hàng trực tuyến)
+- Tăng nhận thức về thương hiệu
+- Đạt được lợi thế cạnh tranh
 
-## Code should look okay by default.
 
-I think most people are going to use [highlight.js](https://highlightjs.org/) or [Prism](https://prismjs.com/) or something if they want to style their code blocks but it wouldn't hurt to make them look _okay_ out of the box, even with no syntax highlighting.
+## SEO 101: Đảm bảo Google có thể lập chỉ mục trang web của bạn
 
-Here's what a default `tailwind.config.js` file looks like at the time of writing:
+Nếu Google không thể thu thập dữ liệu và lập chỉ mục một trang đúng cách thì trang đó không thể xuất hiện trong các trang kết quả của công cụ tìm kiếm (SERP) của Google.
 
-```js
-module.exports = {
-  purge: [],
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-}
-```
+<Image
+  src="/blogs/google-indexing.png"
+  alt="Google Indexing"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-Hopefully that looks good enough to you.
+Đó không hẳn là điều xấu nếu một trang không được lập chỉ mục. Một số trang (ví dụ: trang xác nhận đơn hàng) không thể truy cập được thông qua Google.
 
-### What about nested lists?
+Nhưng nếu bạn muốn một trang được xếp hạng, bạn nên đảm bảo rằng nó được lập chỉ mục. Cách tốt nhất là sử dụng [Google Search Console](https://search.google.com/search-console/about), một công cụ miễn phí của Google.
 
-Nested lists basically always look bad which is why editors like Medium don't even let you do it, but I guess since some of you goofballs are going to do it we have to carry the burden of at least making it work.
+Sau khi thiết lập, hãy khám phá báo cáo “Lập chỉ mục”.
 
-1.  **Nested lists are rarely a good idea.**
-    - You might feel like you are being really "organized" or something but you are just creating a gross shape on the screen that is hard to read.
-    - Nested navigation in UIs is a bad idea too, keep things as flat as possible.
-    - Nesting tons of folders in your source code is also not helpful.
-2.  **Since we need to have more items, here's another one.**
-    - I'm not sure if we'll bother styling more than two levels deep.
-    - Two is already too much, three is guaranteed to be a bad idea.
-    - If you nest four levels deep you belong in prison.
-3.  **Two items isn't really a list, three is good though.**
-    - Again please don't nest lists if you want people to actually read your content.
-    - Nobody wants to look at this.
-    - I'm upset that we even have to bother styling this.
+<Image
+  src="/blogs/google-search-console-indexing.png"
+  alt="Google Search Console Indexing"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-The most annoying thing about lists in Markdown is that `<li>` elements aren't given a child `<p>` tag unless there are multiple paragraphs in the list item. That means I have to worry about styling that annoying situation too.
+Nếu một URL không được lập chỉ mục, bạn có thể dễ dàng tìm hiểu lý do. Sau đó cố gắng khắc phục sự cố có thể thu thập thông tin.
 
-- **For example, here's another nested list.**
+Một trong những cách tốt nhất để khắc phục sự cố về khả năng thu thập thông tin là sitemap.xml.
 
-  But this time with a second paragraph.
+Cấu trúc của sitemap.xml giúp Google hiểu cách trang web của bạn hoạt động. Và giúp Google lập chỉ mục trang web của bạn một cách hiệu quả hơn.
 
-  - These list items won't have `<p>` tags
-  - Because they are only one line each
+<Image
+  src="/blogs/sitemap-xml.png"
+  alt="Sitemap XML"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-- **But in this second top-level list item, they will.**
+Cách bạn tạo sơ đồ trang web chính xác phụ thuộc vào hệ thống quản lý nội dung (CMS) mà trang web của bạn chạy trên đó (WordPress, Shopify, v.v.) 
 
-  This is especially annoying because of the spacing on this paragraph.
+Dù bạn sử dụng phương pháp nào để tạo tệp, hãy gửi tệp đó qua phần “Sơ đồ trang web” trong Google Search Console.
 
-  - As you can see here, because I've added a second line, this list item now has a `<p>` tag.
+Trông như thế này:
 
-    This is the second line I'm talking about by the way.
+<Image
+  src="/blogs/google-search-console-sitemap.png"
+  alt="Google Search Console Sitemap"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-  - Finally here's another list item so it's more like a list.
+## Nghiên cứu từ khóa
 
-- A closing list item, but with no nested list, because why not?
+Nghiên cứu từ khóa là quá trình tìm kiếm những truy vấn mà mọi người tìm kiếm trên Google. Và xác định những cái bạn muốn xếp hạng.
 
-And finally a sentence to close off this section.
+[Google Trends]() thường được nhắc đến trong danh sách các công cụ nghiên cứu từ khóa hiệu quả. Công cụ miễn phí của Google này giúp bạn có được nhiều thông tin liên quan đến từ khóa như mức độ quan tâm theo thời gian, mức độ quan tâm theo vùng, cụm từ tìm kiếm có liên quan, chủ đề có liên quan...
 
-## There are other elements we need to style
+Đặc biệt, bạn cũng có thể sử dụng công cụ này để so sánh các cụm từ tìm kiếm khác nhau. Từ đó biết được cụm từ nào được tìm kiếm nhiều hơn. Sử dụng các từ khóa được tìm kiếm thường xuyên hơn cũng là cách để trang Web của bạn tiếp cận được với số đông người dùng.
 
-I almost forgot to mention links, like [this link to the Tailwind CSS website](https://tailwindcss.com). We almost made them blue but that's so yesterday, so we went with dark gray, feels edgier.
+<Image
+  src="/blogs/google-trends.jpg"
+  alt="Google Trends"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-We even included table styles, check it out:
+Nếu bạn muốn tìm hiểu cách sử dụng Google Trends, tham khảo bài viết [Hướng dẫn sử dụng Google Trends](https://www.google.com/trends/) tại Devful.
 
-| Wrestler                | Origin       | Finisher           |
-| ----------------------- | ------------ | ------------------ |
-| Bret "The Hitman" Hart  | Calgary, AB  | Sharpshooter       |
-| Stone Cold Steve Austin | Austin, TX   | Stone Cold Stunner |
-| Randy Savage            | Sarasota, FL | Elbow Drop         |
-| Vader                   | Boulder, CO  | Vader Bomb         |
-| Razor Ramon             | Chuluota, FL | Razor's Edge       |
 
-We also need to make sure inline code looks good, like if I wanted to talk about `<span>` elements or tell you the good news about `@tailwindcss/typography`.
+## Nội dung
 
-### Sometimes I even use `code` in headings
+Nội dung là một vấn đề lớn trong SEO. Vì vậy, hãy trình bày chính xác cách tạo nội dung thân thiện với SEO.
 
-Even though it's probably a bad idea, and historically I've had a hard time making it look good. This _"wrap the code blocks in backticks"_ trick works pretty well though really.
+### Hiểu những gì người tìm kiếm muốn thấy cho một truy vấn
 
-Another thing I've done in the past is put a `code` tag inside of a link, like if I wanted to tell you about the [`tailwindcss/docs`](https://github.com/tailwindcss/docs) repository. I don't love that there is an underline below the backticks but it is absolutely not worth the madness it would require to avoid it.
+Bước đầu tiên để tạo nội dung thân thiện với SEO là tìm ra search intent cho từ khóa đó.
 
-#### We haven't used an `h4` yet
+Vậy thì search intent chính xác là gì? 
 
-But now we have. Please don't use `h5` or `h6` in your content, Medium only supports two heading levels for a reason, you animals. I honestly considered using a `before` pseudo-element to scream at you if you use an `h5` or `h6`.
+Search intent là lý do cơ bản khiến ai đó tìm kiếm một từ khóa nhất định.
 
-We don't style them at all out of the box because `h4` elements are already so small that they are the same size as the body copy. What are we supposed to do with an `h5`, make it _smaller_ than the body copy? No thanks.
+Ví dụ: lấy từ khóa ***“đồ ăn hữu cơ cho chó”.***
 
-### We still need to think about stacked headings though.
+Họ có muốn mua thứ gì đó không (ý định giao dịch)? Tìm ra những sản phẩm tốt nhất để mua (mục đích thương mại)? Tìm hiểu thức ăn hữu cơ dành cho chó là gì (mục đích cung cấp thông tin)? Hoặc truy cập Organicdogtreats.com (mục đích điều hướng).
 
-#### Let's make sure we don't screw that up with `h4` elements, either.
+Sao nó lại quan trọng?
 
-Phew, with any luck we have styled the headings above this text and they look pretty good.
+### Google có thể biết liệu trang web của bạn có đáp ứng mục đích tìm kiếm hay không.
 
-Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.
+Nếu có, bạn có thể được tăng thứ hạng. Nếu không, bạn sẽ khó xếp hạng trên trang đầu tiên của Google.
 
-What I've written here is probably long enough, but adding this final sentence can't hurt.
+Vì vậy, trước khi viết một từ, bạn cần biết liệu người tìm kiếm có ý định xem các bài đăng trên blog, trang sản phẩm, trang thông tin dịch vụ hay nội dung nào khác hay không.
 
-## GitHub Flavored Markdown
+Ví dụ: khi bạn đọc qua các kết quả trên trang đầu tiên về ***“đồ ăn hữu cơ cho chó”***, bạn sẽ nhận thấy rằng nhiều trang xếp hạng hàng đầu là các trang đánh giá.
 
-I've also added support for GitHub Flavored Mardown using `remark-gfm`.
+<Image
+  src="/blogs/organic-dog-food-for-dogs.png"
+  alt="Organic Dog Food for Dogs"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-With `remark-gfm`, we get a few extra features in our markdown. Example: autolink literals.
+Mặc dù một số ít là các trang danh mục thương mại điện tử:
 
-A link like www.example.com or https://example.com would automatically be converted into an `a` tag.
+<Image
+  src="/blogs/organic-dog-food-for-dogs-ecommerce.png"
+  alt="Organic Dog Food for Dogs Ecommerce"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
 
-This works for email links too: contact@example.com.
+(Điều này được gọi là “mixed intent”. Điều này phổ biến. Không phải lúc nào 100% người tìm kiếm một từ khóa nhất định cũng muốn điều tương tự).
+
+Nhưng vì hầu hết kết quả là các trang đánh giá sản phẩm nên đó có thể là loại trang bạn muốn tạo. Giả sử nó phù hợp với mục tiêu tiếp thị rộng hơn của bạn.
+
+Ngoài ra, hãy xem nội dung để biết số lượng từ, khả năng đọc, bố cục, v.v.
+
+<Image
+  src="/blogs/organic-dog-food-for-dogs-content.png"
+  alt="Organic Dog Food for Dogs Content"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Điều này cung cấp cho bạn cái nhìn sâu sắc về những gì đang hoạt động. Và giúp bạn phát triển kế hoạch của riêng mình.
+
+## SEO On-Page
+
+Bây giờ là lúc tối ưu hóa trang của bạn xung quanh một từ khóa (còn được gọi là “SEO on-page”).
+
+Dưới đây là một số kỹ thuật quan trọng trên trang mà mọi người mới bắt đầu SEO nên biết:
+
+### Thẻ title
+
+Thẻ title có thể xuất hiện dưới dạng tiêu đề của danh sách SERP của bạn. Và chúng là một yếu tố xếp hạng quan trọng.
+
+<Image
+  src="/blogs/title-tag.png"
+  alt="Title Tag"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Ở cấp độ cơ bản nhất, bạn sẽ muốn đảm bảo rằng thẻ title của các trang trên trang web của bạn bao gồm từ khóa mục tiêu chính cho trang và các biến thể.
+
+Nhưng có nhiều cách để tối ưu hóa những điều này hơn là chỉ thêm từ khóa. Hướng dẫn của chúng tôi về cách viết thẻ title nêu ra một số mẹo khác cần ghi nhớ khi bạn viết thẻ title:
+
+- Giữ tiêu đề dài khoảng 50-60 ký tự
+- Đảm bảo mỗi tiêu đề là duy nhất và mang tính mô tả
+- Kiểm tra [SERP - Search Engine Results Pages](https://vi.wikipedia.org/wiki/Trang_k%E1%BA%BFt_qu%E1%BA%A3_c%E1%BB%A7a_c%C3%B4ng_c%E1%BB%A5_t%C3%ACm_ki%E1%BA%BFm) để biết cách bạn có thể làm nổi bật tiêu đề của mình
+
+### Meta Descriptions
+
+Meta descriptions là tóm tắt trang có thể hiển thị dưới tiêu đề trang trên SERPs.
+
+<Image
+  src="/blogs/meta-description.png"
+  alt="Meta Description"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Đây là những cơ hội tuyệt vời để khuyến khích người dùng nhấp vào danh sách của bạn thay vì danh sách của đối thủ cạnh tranh.
+
+Mô tả meta không phải là yếu tố xếp hạng trực tiếp. Nhưng một mô tả hấp dẫn có thể tác động tích cực đến CTR (tỷ lệ nhấp), điều này rất quan trọng.
+
+Dưới đây là một số mẹo nhanh để tối ưu hóa chúng đúng cách:
+
+- Giữ chúng dài khoảng 105 ký tự
+- Bao gồm từ khóa chính của bạn
+- Thêm CTA nếu nó có liên quan
+- Tránh mô tả meta trùng lặp
+- Làm cho chúng có ý nghĩa và mang tính mô tả, phù hợp với nội dung của bạn
+
+### Thẻ heading
+
+Thẻ heading là thẻ HTML giúp Google hiểu cấu trúc trang của bạn.
+
+Mỗi trang nên có một thẻ H1 chứa tiêu đề chính. Và sử dụng thẻ H2-H6 cho các tiêu đề phụ, tùy theo cấp độ của chúng trong cấu trúc.
+
+Như thế này:
+
+<Image
+  src="/blogs/heading-tags.png"
+  alt="Heading Tags"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Ngoài việc sử dụng các tiêu đề phụ để sắp xếp nội dung của bạn, hãy bao gồm các từ khóa mục tiêu và các thuật ngữ liên quan bên trong mỗi tiêu đề phụ.
+
+### URL
+
+URL của mỗi trang phải mô tả chính xác nội dung của nó.
+
+Hãy suy nghĩ về nó theo cách này:
+
+Nếu bạn có hai URL sau đây:
+
+- /shirt/2789469760/
+- /red-shirt/
+
+Bạn nghĩ cái nào được tối ưu hóa tốt hơn?
+
+Tất nhiên, url hai vì lý do đơn giản là nó mang tính mô tả. Bằng cách nhìn vào URL, bạn có thể xác định rằng trang này nói về áo màu đỏ.
+
+Theo nguyên tắc chung, URL nên:
+
+- Hãy mang tính mô tả và bao gồm từ khóa chính của trang
+- Sử dụng dấu gạch nối để phân tách các từ
+- Sử dụng chữ thường thay vì trộn lẫn chữ in hoa
+- Càng ngắn gọn càng tốt nhưng vẫn mô tả được nội dung của trang
+
+### Hình ảnh
+
+Tối ưu hóa hình ảnh giúp bạn cung cấp trải nghiệm người dùng tốt hơn. Nó cũng có thể giúp bạn xếp hạng cao hơn trong tìm kiếm (đặc biệt là trong Google Images).
+
+Bạn có thể tối ưu hình ảnh của mình bằng cách:
+
+- Sử dụng tên tệp mô tả
+- Giảm kích thước tệp và nén hình ảnh để giảm thời gian tải
+- Viết [alt text](https://monamedia.co/alt-text-la-gi/#:~:text=Alt%20Text%20(Alt%20attribute)%20l%C3%A0,thu%E1%BB%99c%20t%C3%ADnh%20c%E1%BB%A7a%20th%E1%BA%BB%20Alt.) để hỗ trợ công cụ tìm kiếm và cải thiện khả năng truy cập
+- Cố gắng sử dụng hình ảnh độc đáo thay vì hình ảnh có sẵn
+
+### Thêm liên kết từ các trang khác nhau trên trang web của bạn
+
+Không có hướng dẫn cơ bản về SEO trang web nào có thể hoàn thiện nếu không ít nhất chạm vào [internal link](). Liên kết giữa các trang trên trang web của bạn có thể:
+
+- Giúp công cụ tìm kiếm hiểu cấu trúc trang web của bạn
+- Truyền quyền (còn gọi là PageRank) giữa các trang
+- Khuyến khích người dùng điều hướng giữa các trang
+
+## Link Building
+
+Một yếu tố quan trọng khác trong việc SEO thành công đến từ việc xây dựng uy tín cho trang web của bạn trong mắt Google.
+
+Làm thế nào để bạn làm điều đó? Sử dụng tính năng link building để kiếm được backlinks.
+
+Nói tóm lại, backlink là một trang web cung cấp liên kết “quay lại” cho trang web của bạn—về cơ bản mang lại cho bạn một phiếu tín nhiệm và ủng hộ bạn. Miễn là trang web liên kết ngược lại trang web của bạn là trang web đáng tin cậy và có liên quan, liên kết đó có thể giúp bạn xếp hạng cao hơn trên Google.
+
+### Xây dựng liên kết từ các hiệp hội, nhà cung cấp và doanh nghiệp được kết nối
+
+Một trong chiến lược hay nhất khi xây dựng backlinks là tiếp cận các kết nối thực tế mà doanh nghiệp của bạn có.
+
+Những kết nối này bao gồm:
+
+- Nhà cung cấp của bạn
+- Các hiệp hội mà bạn là thành viên
+- Trang web khối văn phòng của bạn
+- Phòng thương mại địa phương của bạn
+
+Thông thường, tất cả những gì bạn cần làm là liên hệ với người liên hệ của bạn tại trang web đó. Và họ sẽ vui lòng thêm liên kết của bạn.
+
+## Technical SEO
+Technical SEO là đảm bảo trang web của bạn có thể dễ dàng truy cập vào các công cụ tìm kiếm và hoạt động tốt cho người dùng.
+
+Nếu bạn chưa làm như vậy, hãy kết nối trang web của bạn với Google Search Console. Và khắc phục mọi vấn đề về lập chỉ mục.
+
+Sau đó, đi sâu vào các vấn đề cơ bản về kỹ thuật SEO khác:
+
+### Kiểm tra file Robot.txt của bạn 
+
+Tùy thuộc vào CMS của trang web, bạn có thể thiết lập tệp robots.txt. Nó thường được tìm thấy tại: `https://yourdomain.com/robots.txt`
+
+Và nó sẽ trông giống như thế này:
+
+<Image
+  src="/blogs/robots-txt.png"
+  alt="Robots.txt"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Nếu bạn chưa có, bạn sẽ muốn tạo một cái.
+
+Nhưng chính xác thì robots.txt dùng để làm gì?
+
+Robots.txt hướng dẫn Googlebot (và các trình thu thập dữ liệu trang web khác) cách thu thập dữ liệu trang web của bạn. Ví dụ: nó có thể chặn truy cập một số trang nhất định.
+
+Bạn nên đảm bảo rằng Google có quyền truy cập vào các trang độc đáo, chất lượng cao mà bạn muốn được lập chỉ mục. Và chặn quyền truy cập vào các trang trùng lặp hoặc riêng tư.
+

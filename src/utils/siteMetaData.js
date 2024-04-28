@@ -1,10 +1,10 @@
 // please update required information
 const siteMetadata = {
-  title: "Devful Blog",
+  title: "Devful Blog - Lập trình, công nghệ và cuộc sống",
   author: "Gia Bao",
-  headerTitle: "Devful Blog",
+  headerTitle: "Devful Blog - Lập trình, công nghệ và cuộc sống",
   description:
-    "Blog cá nhân của Devful nơi chia sẻ kiến thức về lập trình, công nghệ và cuộc sống. Hãy cùng khám phá những bài viết thú vị tại Devful Blog nhé!",
+    "Blog cá nhân của Devful nơi chia sẻ kiến thức về lập trình, công nghệ và cuộc sống. Khám phá ngay các bài viết chất lượng về lập trình từ cơ bản đến nâng cao. Hãy bắt đầu hành trình của bạn ngay hôm nay cùng Devful!",
   language: "vi_VN",
   theme: "system", // system, dark or light
   siteUrl: "https://devful-blog.vercel.app/", // your website URL

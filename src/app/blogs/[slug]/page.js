@@ -1,4 +1,5 @@
 import BlogDetails from "@/src/components/Blog/BlogDetails";
+import BlogLayoutThree from "@/src/components/Blog/BlogLayoutThree";
 import RenderMdx from "@/src/components/Blog/RenderMdx";
 import Tag from "@/src/components/Elements/Tag";
 import siteMetadata from "@/src/utils/siteMetaData";
@@ -59,6 +60,12 @@ export async function generateMetadata({ params }) {
 
 export default function BlogPage({ params }) {
   const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
+
+  const relatedBlogs = allBlogs.filter(
+    (item) =>
+      item.tags.some((tag) => blog.tags.includes(tag)) &&
+      item._raw.flattenedPath !== blog._raw.flattenedPath
+  );
 
   if (!blog) {
     notFound();
@@ -160,6 +167,18 @@ export default function BlogPage({ params }) {
             </details>
           </div>
           <RenderMdx blog={blog} />
+        </div>
+        <div className="w-full  mt-16 sm:mt-24  md:mt-32 px-5 sm:px-10 md:px-24  sxl:px-32 flex flex-col items-center justify-center">
+          <span className="text-5xl">Bài viết tương tự</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-16 mt-16">
+            {relatedBlogs.map((blog, index) => {
+              return (
+                <article key={index} className="col-span-1 row-span-1 relative">
+                  <BlogLayoutThree blog={blog} />
+                </article>
+              );
+            })}
+          </div>
         </div>
       </article>
     </>
