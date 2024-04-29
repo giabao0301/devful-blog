@@ -1,7 +1,6 @@
 import { allBlogs } from "@/.contentlayer/generated";
 import BlogLayoutThree from "@/src/components/Blog/BlogLayoutThree";
 import Categories from "@/src/components/Blog/Categories";
-import { is } from "date-fns/locale";
 import GithubSlugger, { slug } from "github-slugger";
 import NotFound from "../../not-found";
 
@@ -27,28 +26,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const allCategories = ["all"]; // Initialize with 'all' category
-  allBlogs.forEach((blog) => {
-    blog.tags.forEach((tag) => {
-      const slugified = slug(tag);
-      if (!allCategories.includes(slugified)) {
-        allCategories.push(slugified);
-      }
-    });
-  });
-
-  if (allCategories.includes(params.slug)) {
-    return {
-      title: `${(
-        params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-      ).replaceAll("-", " ")} Blogs`,
-      description: `Tìm hiểu thêm về ${
-        params.slug === "all" ? "web development" : params.slug
-      } qua các bài viết chất lượng từ Devful Blog. Hãy khám phá ngay!`,
-    };
-  } else {
-    return;
-  }
+  return {
+    title: `${(
+      params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
+    ).replaceAll("-", " ")} Blogs`,
+    description: `Tìm hiểu thêm về ${
+      params.slug === "all" ? "web development" : params.slug
+    } qua các bài viết chất lượng từ Devful Blog. Hãy khám phá ngay!`,
+  };
 }
 
 const CategoryPage = ({ params }) => {
