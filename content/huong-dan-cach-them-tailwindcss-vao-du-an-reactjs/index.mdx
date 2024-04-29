@@ -1,0 +1,172 @@
+---
+title: "Hướng dẫn cách thêm Tailwind CSS vào dự án ReactJS"
+description: "Tailwind CSS về cơ bản là framework CSS giúp xây dựng trang web một cách hiện đại mà không cần rời khỏi file HTML."
+image: "../../public/blogs/tailwind-css.jpg"
+publishedAt: "2022-11-12"
+updatedAt: "2022-11-12"
+author: "codebucks"
+isPublished: true
+tags:
+- css
+- web development
+- tailwindcss
+---
+
+## Tailwind CSS là gì?
+
+Tailwind CSS về cơ bản là framework CSS giúp xây dựng trang web một cách hiện đại mà không cần rời khỏi file HTML. Tailwind CSS cung cấp các class với những nhiệm vụ khác nhau, sử dụng class để thêm vào thẻ HTML.
+
+<Image
+  src="/blogs/tailwindcss-logo.png"
+  alt="Google Search Console Sitemap"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+### Tại sao nên sử dụng Tailwind CSS?
+
+Chúng ta thường lựa chọn những framework nhanh, dễ học để ứng dụng vào dự án. Tailwind CSS sẽ là một trợ thủ đắc lực hỗ trợ bạn, vì chúng được tích hợp sẵn rất nhiều tính năng và kiểu dáng để người dùng lựa chọn.
+
+Bên cạnh đó, chúng cũng giúp tạo giao diện người dùng đẹp mắt và hiện đại. Tailwind CSS tạo các tiện ích nhỏ và dễ dàng tích hợp trực tiếp các class hiện có vào HTML code.
+
+### Ưu điểm của Tailwind CSS
+
+- Tùy biến cao, hiệu suất cao. Không giống như Bootstrap cung cấp những class gần như đồng gọi sẵn, chỉ cần gọi ra là dùng. Tailwind giúp bạn định nghĩa những phần phù hợp với dự án của bạn mà không bị gò bó.
+- Cho phép xây dựng responsive layout phức tạp.
+- Responsive và phát triển dễ dàng.
+- Tạo thành phần dễ dàng.
+- Hỗ trợ cài đặt với nhiều framework front-end khác như react, vuejs,…
+
+### Nhược điểm của Tailwind CSS
+
+- Thiếu tiêu đề và thành phần điều hướng (navigation).
+- Cần có thời gian để làm quen, tìm hiểu và nhớ tên các class.
+- Có kiến thức về CSS thì mới sử dụng tốt được.
+
+## Sử dụng Tailwind CSS thông qua CDN
+
+```html
+<link href=”https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css” rel=”stylesheet”>
+```
+
+**Lưu ý**: Có một số hạn chế khi sử dụng CDN.
+
+- Không thể sử dụng tùy chỉnh chủ đề mặc định của Tailwind
+- Không thể sử dụng các lệnh như @apply, @variants,...
+- Không thể cài đặt plugin của bên thứ ba
+- Tốc độ tải trang của trang web phụ thuộc vào tốc độ kết nối internet của người dùng và khoảng cách đến máy chủ CDN. Nếu kết nối internet chậm hoặc khoảng cách đến máy chủ CDN quá xa, thời gian tải trang sẽ mất nhiều thời gian.
+- Bạn cần phải trả phí để sử dụng các tính năng, dịch vụ CDN cao cấp.
+- Bạn không thể kiểm soát việc lưu trữ tệp CSS của bạn trên máy chủ CDN. Điều này có thể ảnh hưởng đến việc kiểm soát và bảo mật dữ liệu của bạn.
+
+Vì vậy, trước khi sử dụng CDN, bạn nên cân nhắc các hạn chế này để đảm bảo rằng việc sử dụng CDN là phù hợp với nhu cầu của mình.
+
+**Ví dụ**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Tailwind CSS CDN link -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="m-4">
+    <h1 class="text-green-500 text-4xl font-bold">
+        Devful
+    </h1>
+    <strong>Space for developers</strong>
+    <p>
+        Devful tin rằng để trở thành một lập trình viên giỏi đến từ việc hiểu bản chất của công nghệ chứ không đơn thuần chỉ biết code.
+    </p>
+
+</body>
+
+</html>
+```
+**Output**
+
+<Image
+  src="/blogs/tailwindcss-example.png"
+  alt="Google Search Console Sitemap"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+## Cài đặt Tailwind CSS
+
+### Thông qua npm
+
+**Bước 1**: Tailwind có sẵn trên npm và bạn có thể cài đặt nó bằng lệnh sau:
+
+```js
+ npm install tailwindcss postcss autoprefixer
+ ```
+
+**Bước 2**: Tạo tệp cấu hình Tailwind CSS bằng lệnh sau:
+```js
+ npx tailwindcss init
+ ```
+
+**Bước 3**: Tạo một `postcss.config.js` file trong thư mục gốc của thư mục dự án và thêm nội dung sau:
+
+```js
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
+}
+```
+
+**Bước 4**: Sau đó, tạo một styles.css file trong thư mục dự án của bạn src (hoặc bất kỳ thư mục nào khác mà bạn thích) và thêm nội dung sau:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+**Bước 5**: Ở thao tác này, bạn sẽ nhập các kiểu cơ sở, thành phần (components) và utilities styles từ Tailwind CSS.
+
+Cuối cùng, thêm tập lệnh vào `package.json` file của bạn để tạo CSS:
+
+```json
+"scripts": {
+  "build": "postcss src/styles.css -o dist/styles.css"
+}
+```
+
+Tập lệnh này sẽ biên dịch `src/styles.css` file của bạn và xuất nó thành một `dist/styles.css` file.
+
+**Bước 6**: Chạy lệnh sau để xây dựng CSS của bạn:
+
+```
+npm run build
+```
+
+### Thông qua yarn
+
+**Bước 1**: Cài đặt tailwind bằng cách sử dụng lệnh:
+
+```
+yarn add tailwindcss postcss autoprefixer
+```
+
+**Bước 2, 3, 4, 5** làm tương tự như cách cài đặt Tailwind CSS thông qua npm ở trên.
+
+**Bước 6**: Chạy lệnh sau để xây dựng CSS của bạn:
+
+```
+yarn build
+```
+
+## Lời kết
+
+Tailwind CSS đang dần trở thành công cụ hữu ích, không chỉ dành cho người mới bắt đầu mà còn cho những chuyên gia. Vì vậy, nếu bạn đang tìm kiếm một công cụ phát triển web mạnh mẽ và tiện ích thì Tailwind CSS là lựa chọn phù hợp cho bạn đấy.
+
+Bạn có thể tham khảo thêm những bài viết hữu ích về chủ đề "Lập trình web" tại Blog của 200Lab nhé!
