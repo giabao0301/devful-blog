@@ -31,7 +31,9 @@ export async function generateMetadata({ params }) {
       params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
     ).replaceAll("-", " ")} Blogs`,
     description: `Tìm hiểu thêm về ${
-      params.slug === "all" ? "web development" : params.slug
+      params.slug === "all"
+        ? "Lập trình web"
+        : params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
     } qua các bài viết chất lượng từ Devful Blog. Hãy khám phá ngay!`,
   };
 }
@@ -73,7 +75,7 @@ const CategoryPage = ({ params }) => {
             <span className="mt-2 inline-block">
               Khám phá những bài viết về{" "}
               {params.slug === "all"
-                ? "web development"
+                ? "Lập trình web"
                 : params.slug.charAt(0).toUpperCase() +
                   params.slug.slice(1)}{" "}
               qua bộ sưu tập blog và hướng dẫn chuyên nghiệp của chúng tôi
