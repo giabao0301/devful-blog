@@ -3,16 +3,19 @@ const siteMetadata = require("./src/utils/siteMetaData");
 module.exports = {
   siteUrl: siteMetadata.siteUrl,
   generateRobotsTxt: true,
-  // transform: async (config, path) => {
-  //   // Define a regex pattern to match paths like "/categories/<anything>-<a number>"
-  //   const regexPattern = /-.+?-\d+$/;
+  transform: async (config, path) => {
+    if (path.includes("/categories/")) {
+      if (parseInt(path.slice(-1))) {
+        return null;
+      }
+    }
 
-  //   // Check if the path matches the regex pattern
-  //   if (regexPattern.test(path)) {
-  //     return null; // Return null to exclude the path
-  //   }
-
-  //   // If no exclusion criteria match, return the original path
-  //   return path;
-  // },
+    return {
+      loc: path, // => this will be exported as http(s)://<config.siteUrl>/<path>
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      alternateRefs: config.alternateRefs ?? [],
+    };
+  },
 };
