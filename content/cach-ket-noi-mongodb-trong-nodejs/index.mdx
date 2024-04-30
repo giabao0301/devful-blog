@@ -1,0 +1,236 @@
+---
+title: "Cách kết nối MongoDB trong Nodejs"
+description: "Trong bài viết này chúng ta sẽ đi tìm hiểu làm thế nào để sử dụng MongoDB với Nodejs."
+image: "../../public/blogs/mongodb-logo.jpg"
+publishedAt: "2023-01-01"
+updatedAt: "2023-01-01"
+author: "Gia Bao"
+isPublished: true
+tags: 
+- Nodejs
+---
+
+Trong MongoDB, dữ liệu được lưu trữ như một document, một tập của các cặp key-value. Bạn có thể định nghĩa nhiều database trong MongoDB và mỗi database có nhiều collections, những collections này đơn giản là tập của các documents được lưu trữ dạng cặp key-value.
+
+Cấu trúc dữ liệu định nghĩa document được gọi là BSON(Binary JSON). BSON là một dạng nhị phân của JSON và cũng hỗ trợ những kiểu dữ liệu như Date, những kiểu mà không được hỗ trợ trong định dạng JSON. MongoDB sẽ chuyển đổi JSON tới BSON và đổi lại lợi ích hiệu suất cao, mặc dù người dùng có thể save, query và nhận dữ liệu như JSON.
+
+## 1. Tạo kết nối với MongoDB trong NodeJs
+
+Để làm việc với database, đầu tiên bạn cần tạo một kết nối. Trong mục này của bài viết, chúng ta sẽ sử dụng 'native NodeJs drivers' của MongoDB để tạo kết nối với MongoDB server. Để cài đặt driver của MongoDB, sử dụng lệnh npm. Sau đó, chạy lệnh bên dưới trong thư mục dự án của bạn
+
+```bash
+npm install mongodb
+```
+
+Tiếp theo, bạn nên tạo một file js trắng trong thư mục dự án và viết đoạn code như bên dưới:
+
+```javascript
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://localhost:27017/my_database_name';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
+
+    // do some work here with the database.
+
+    //Close connection
+    db.close();
+  }
+});
+```
+
+Bây giờ giả sử rằng database của bạn là đang chạy trên một url được đề cập ở trên (mongodb://localhost:27017/my_database_name) và tiếp theo chạy file này với node, chúng ta sẽ có thể kết nối tới database server.
+
+Ok, phân tích những code trên, chúng ta chia chương trình thành những bước hợp lý sau:
+
+- **Load mongodb module**: Chúng ta yêu cầu để load mongodb module trong code của chúng ta. MongoDB sẽ biểu diễn 'native mongodb dỉivers' cho Node.js.
+
+```javascript
+var mongodb = require('mongodb');
+```
+
+- **Định nghĩa url cần để kết nối tới**: Chúng ta cần để biết nơi mà mongodb server đang chạy. Url chỉ ra nơi đặt instance của mongodb đang chạy, server mà chúng ta có thể kết nối đến nó. Url cũng bao gồm tên database mà chúng ta dự định kết nối đến.
+
+```javascript
+var url = 'mongodb://localhost:27017/my_database_name';
+```
+
+- **Kết nối tới database**: Hãy sử dụng MongoClient interface để kết nối đến database. Trong hàm callback chúng ta nhận error hoặc db object. Chúng ta sử dụng db object để giao tiếp với database.
+
+```javascript
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
+
+    // do some work here with the database.
+
+    //Close connection
+    db.close();
+  }
+});
+```
+
+## 2. Thêm, sửa và lấy dữ liệu trên MongoDB
+
+Bây giờ bạn có một kết nối db đã sẵn sàng, hãy quan sát làm thế nào chúng ta có thể thực hiện một vài thao tác cơ bản trên MongoDB.
+
+Có hai điều cần quan tâm khi sử dụng mongodb native driver:
+
+- Tên truy vấn và tham số của chúng là tương tự như những lệnh mongodb gốc.
+- Tất cả những hàm truy vấn này nắm giữ hàm callback là đối số cuối cùng. Hàm callback đối xử tham số đầu tiên như error và tham số thứ hai như kết quả thành công. Kết quả là là kết quả hay đầu ra được cung cấp bởi mongodb đang chạy những lệnh này. Nó là quen thuộc với những gì bạn thấy nếu bạn đã chạy những truy vấn này trên mongodb shell.
+
+### 2.1. Thêm dữ liệu vào MongoDB
+
+Hãy giả sử rằng chúng ta cần để tạo một tập hợp các users và lưu một vài users. Ví dụ chúng ta sử dụng hàm insert để lưu thông tin user.
+
+```javascript
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://localhost:27017/my_database_name';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
+
+    // Get the documents collection
+    var collection = db.collection('users');
+
+    //Create some users
+    var user1 = {name: 'modulus admin', age: 42, roles: ['admin', 'moderator', 'user']};
+    var user2 = {name: 'modulus user', age: 22, roles: ['user']};
+    var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
+
+    // Insert some users
+    collection.insert([user1, user2, user3], function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+      }
+      //Close connection
+      db.close();
+    });
+  }
+});
+```
+
+Trong code trước chúng ta đã làm theo các bước sau:
+
+- **Nhận tham chiếu của collection 'users'**: Chúng ta đã sử dụng phương thức db.collection để nhận tham chiếu của bảng 'users' (hay còn gọi là users collection). Nếu collection chưa tồn tại, tiếp theo nó sẽ được tạo mới trước khi insert. Nếu nó đã tồn tại, bạn sẽ làm việc trên cái đó. Bạn không cần để một lệnh riêng biệt tạo một collection.
+
+```javascript
+var collection = db.collection('users');
+```
+
+- **Chuẩn bị dữ liệu thêm mới**: Chúng ta đã tạo một vài ví dụ đối tượng bản ghi user, được đặt tên là user1, user2 và user3. Cấu trúc của document là không cố định, chúng đơn giản là những đối tượng JS với dữ liệu của entity.
+
+- **Thêm mới tới database**: Chúng ta đã sử dụng phương thức collection.insert để thêm mới dữ liệu trong collection của database. Chúng ta đã truyền một mảng của users và nó được lưu tất cả chúng trong một bước. Nếu chúng ta cần lưu chỉ một document (1 thông tin user), thì chúng ta có thể truyền trong hàm insert mình user đó, ví dụ collection.insert(user1, callback).
+
+```javascript
+      // Insert some users
+      collection.insert([user1, user2, user3], function (err, result) {
+        if (err) {
+          console.log(err);
+       } else {
+          console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+        }
+        //Close connection
+        db.close();
+      });
+```
+
+- **Callback**: Hàm callback cho phương thức insert có hai tham số, đầu tiên là error và còn lại là result. Nếu có một lỗi, tiếp theo đối tượng lỗi sẽ có error chi tiết hoặc ngược lại sẽ là null. Result sẽ là một mảng các documents đã được lưu.
+
+### 2.2 Cập nhật dữ liệu trong MongoDB
+
+Để cập nhật những bản ghi chúng ta sử dụng hàm collection.update. Tên và các tham số của hàm update là tương tự những truy vấn gốc của mongodb. Hãy quan sát một ví dụ bên dưới:
+
+```javascript
+// Get the documents collection
+var collection = db.collection('users');
+
+// Insert some users
+collection.update({name: 'modulus user'}, {$set: {enabled: false}}, function (err, numUpdated) {
+  if (err) {
+    console.log(err);
+  } else if (numUpdated) {
+    console.log('Updated Successfully %d document(s).', numUpdated);
+  } else {
+    console.log('No document found with defined "find" criteria!');
+  }
+  //Close connection
+  db.close();
+});
+```
+
+### 2.3. Lấy dữ liệu từ MongoDB
+
+Tiếp theo, hãy lấy dữ những documents từ mongodb. Để làm điều này chúng ta có thể gọi hàm find trên đối tượng collection như chúng ta làm trên mongodb shell. Đây là một ví dụ:
+
+```javascript
+//lets require/import the mongodb native drivers.
+var mongodb = require('mongodb');
+
+//We need to work with "MongoClient" interface in order to connect to a mongodb server.
+var MongoClient = mongodb.MongoClient;
+
+// Connection URL. This is where your mongodb server is running.
+var url = 'mongodb://localhost:27017/my_database_name';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function (err, db) {
+  if (err) {
+    console.log('Unable to connect to the mongoDB server. Error:', err);
+  } else {
+    //HURRAY!! We are connected. :)
+    console.log('Connection established to', url);
+
+    // Get the documents collection
+    var collection = db.collection('users');
+
+    // Insert some users
+    collection.find({name: 'modulus user'}).toArray(function (err, result) {
+      if (err) {
+        console.log(err);
+      } else if (result.length) {
+        console.log('Found:', result);
+      } else {
+        console.log('No document(s) found with defined "find" criteria!');
+      }
+      //Close connection
+      db.close();
+    });
+  }
+});
+```
+
+Ví dụ trên bạn có thể thấy chúng ta đã sử dụng .toArray được nối với find bởi vì việc chạy hàm find chỉ trả về một con trỏ db. Tiếp theo chúng ta phải lặp trên con trỏ và lấy kết quả trả về. Lý do cho điều này là vì hiệu suất, mặc định mongodb không lấy đầy đủ bản ghi dữ liệu. Việc sử dụng toArray nói driver rằng chúng ta muốn đầy đủ dữ liệu của mỗi user, cái mà tiếp theo được trả về.
+
+
+
+
+
+
