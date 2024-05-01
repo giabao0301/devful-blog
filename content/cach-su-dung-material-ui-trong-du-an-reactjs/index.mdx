@@ -1,0 +1,283 @@
+---
+title: "Cách sử dụng Material UI trong dự án ReactJS"
+description: "Material UI là một thư viện UI phổ biến cho ReactJS. Bài viết này sẽ hướng dẫn cách sử dụng Material UI trong dự án ReactJS của bạn."
+image: "../../public/blogs/material-ui.png"
+publishedAt: "2023-01-02"
+updatedAt: "2023-01-02"
+author: "Gia Bao"
+isPublished: true
+tags: 
+- material ui
+- reactjs
+- css
+---
+
+## Cài đặt Material-UI
+
+Material UI thì có sẵn như một npm package
+
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+Giả sử rằng bạn đã cài đặt React trên thiết bị của mình, bạn có toàn quyền truy cập vào thư viện MUI và tất cả các thành phần của nó. MUI có hơn một trăm thành phần khác nhau thuộc một trong các loại sau:
+
+- Inputs
+- Data Display
+- Feedback
+- Surfaces
+- Navigation
+- Layout
+- Utils
+- Data Grid
+- Date/Time
+
+Sau khi cài đặt MUI dưới dạng gói npm, việc sử dụng thư viện trong dự án của bạn rất đơn giản. Chỉ cần nhập thành phần bắt buộc vào file thích hợp và chèn các tùy chọn tạo kiểu tại các vị trí cụ thể trong toàn bộ giao diện người dùng.
+
+Nếu bạn muốn tạo trang đăng nhập cho ứng dụng React của mình, một số thành phần MUI mà bạn có thể sử dụng sẽ tiết kiệm thời gian và giúp bạn tạo ra một thiết kế rõ ràng.
+
+## Tạo thành phần Sign-in trong React
+
+Để tạo một thành phần mới trong React, chỉ cần điều hướng đến thư mục **src** của React và tạo một thư mục thành phần mới. Thư mục thành phần có thể là nơi lưu trữ tất cả các thành phần, bắt đầu với thành phần Sign-in.
+
+### File Signin.js
+
+```jsx
+import React from 'react';
+function Signin() {
+return (
+<div> </div>
+);
+}
+export default Signin;
+```
+
+Sau khi tạo thành phần Sign-in, đã đến lúc liên kết nó với ứng dụng React bằng cách nhập vào thành phần **App** (nằm trong thư mục **src**).
+
+### File App.js đã cập nhật
+
+```jsx
+import React from "react";
+import Signin from "./components/Signin";
+function App() {
+  return (
+    <div>
+      <Signin />
+    </div>
+  );
+}
+export default App;
+```
+
+Bây giờ bạn có thể bắt đầu khám phá các thành phần MUI muốn sử dụng trên trang đăng nhập của mình.
+
+## Thành phần Typography là gì?
+
+Thành phần **Typography** thuộc danh mục hiển thị dữ liệu của MUI và có 13 biến mặc định, bao gồm:
+
+-h1
+-h2
+-h3
+-h4
+-h5
+-h6
+-subtitle1
+-subtitle2
+-body1
+-body2
+-button
+-caption
+-overline
+
+Biến bạn chọn phải phụ thuộc vào văn bản bạn muốn hiển thị. Ví dụ, nếu bạn muốn hiển thị một tiêu đề, bạn có thể sử dụng bất kỳ biến tiêu đề nào trong số 6 biến tiêu đề trong giao diện người dùng của mình. Chỉ cần chèn biến prop và giá trị đã chọn vào thành phần Typography.
+
+### Sử dụng ví dụ về thành phần Typography
+
+```jsx
+import React from "react";
+import Typography from "@mui/material/Typography";
+function Signin() {
+  return (
+    <div>
+      <Typography variant="h4"> Sign In </Typography>
+    </div>
+  );
+}
+export default Signin;
+```
+
+Một điểm quan trọng khác so với đoạn code trên là mỗi khi bạn chèn một thành phần mới vào giao diện người dùng, bạn cũng sẽ cần nhập nó ở đầu file thành phần React của mình. Cập nhật thành phần Sign-in với thành phần Typography (như được thấy trong đoạn code ở trên) sẽ tạo ra kết quả sau trong trình duyệt của bạn:
+
+<Image
+  src="/blogs/material-ui-la-gi-1.jpg"
+  alt="Material-UI"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+## Thành phần Text Field là gì?
+
+Thành phần Text Field thuộc loại input. Thành phần này có hai chức năng đơn giản; nó cho phép người dùng nhập hoặc chỉnh sửa văn bản trong giao diện người dùng. Thành phần Text Field sử dụng 3 biến, cụ thể là outlined, filled và standard, với outlined là tùy chọn mặc định. Do đó, nếu bạn muốn sử dụng thành phần Text Field mặc định, bạn không cần phải bao gồm phần hỗ trợ biến. Thành phần Text Field cũng sử dụng một số prop khác, bao gồm label, required, type, id, disabled, v.v.
+
+### Sử dụng ví dụ về thành phần Text Field
+
+```jsx
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+function Signin() {
+  return (
+    <div>
+      <Typography variant="h4"> Sign In </Typography>
+      <TextField label="Email Address" required id="email" name="email" />
+      <TextField
+        label="Password"
+        required
+        id="password"
+        name="password"
+        type="password"
+      />
+    </div>
+  );
+}
+export default Signin;
+```
+
+Đoạn code trên sẽ tạo ra kết quả sau trong trình duyệt của bạn:
+
+<Image
+  src="/blogs/material-ui-la-gi-2.jpg"
+  alt="Material-UI"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+## Thành phần Link là gì?
+
+Như tên gọi cho thấy, thành phần Link hoạt động giống như một liên kết CSS thuần túy. Nó nằm trong danh mục điều hướng, có href truyền thống và các prop mục tiêu. Ngoài ra, nó còn có một prop gạch chân, màu sắc và biến.
+
+Tuy nhiên, không cần phải sử dụng bất kỳ prop bổ sung nào trừ khi bạn muốn liên kết của mình trông độc đáo. Ví dụ, giá trị mặc định của prop gạch chân là “always” và hai giá trị khác mà bạn có thể gán cho đề xuất là “none” và “hover”.
+
+Do đó, bạn chỉ cần đưa prop gạch chân vào thành phần của mình khi không muốn có dấu gạch dưới hoặc muốn nó có trạng thái di chuột.
+
+### Sử dụng ví dụ về thành phần Link
+
+```jsx
+<Link href="#">forget password?</Link>
+```
+
+Chèn code trên vào thành phần Sign-in hiện tại của bạn sẽ tạo ra kết quả sau trong trình duyệt:
+
+<Image
+  src="/blogs/material-ui-la-gi-3.jpg"
+  alt="Material-UI"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+## Thành phần Button là gì?
+
+Thành phần Button cũng thuộc danh mục input và tuân theo chức năng chung của nút - truyền đạt hành động của người dùng đối với ứng dụng. Thành phần này sử dụng một trong 3 biến (text, contained và outline) và mỗi biến có thể xuất hiện ở một trong 3 trạng thái - primary, disabled và linked.
+
+Biến mặc định của thành phần Button là text. Do đó, nếu bạn muốn có nút có hình dạng khác, bạn sẽ cần sử dụng biến prop tương ứng. Ngoài phần hỗ trợ biến, thành phần Button cũng có một trình xử lý onclick và prop color (màu), cùng nhiều thành phần khác.
+
+### Sử dụng ví dụ về thành phần Button
+
+```jsx
+<Button variant="contained"> Sign In</Button>
+```
+
+Chèn code trên vào thành phần Sign-in sẽ cập nhật giao diện người dùng của bạn trông giống như sau:
+
+<Image
+  src="/blogs/material-ui-la-gi-4.jpg"
+  alt="Material-UI"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+Bây giờ bạn có một nút tương tác khi di chuột qua. Nhưng tất cả các thành phần đều nằm ngang và trông không đẹp.
+
+## Thành phần Box là gì?
+
+Thành phần Box là chính xác những gì bạn cần để tổ chức các thành phần tiện ích (chẳng hạn như thành phần Button) trong ứng dụng React. Thành phần Box sử dụng một sx prop, có quyền truy cập vào tất cả các thuộc tính hệ thống (chẳng hạn như chiều cao và chiều rộng) mà bạn cần để tổ chức các thành phần trong giao diện người dùng của mình.
+
+### Sử dụng ví dụ về thành phần Box
+  
+```jsx
+import React from "react";
+import Link from "@mui/material/Link";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Button, Box } from "@mui/material";
+function Signin() {
+  return (
+    <div>
+      <Box
+        sx={{
+          my: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4"> Sign In </Typography>
+        <TextField
+          label="Email Address"
+          required
+          id="email"
+          name="email"
+          margin="normal"
+        />
+        <TextField
+          label="Password"
+          required
+          id="password"
+          name="password"
+          type="password"
+          margin="normal"
+        />
+        <Link href="#" sx={{ mr: 12, mb: 2 }}>
+          forget password?
+        </Link>
+        <Button variant="contained" sx={{ mt: 2 }}>
+          Sign In
+        </Button>
+      </Box>
+    </div>
+  );
+}
+export default Signin;
+```
+
+Bằng cách bao quanh thành phần Box bàng các thành phần tiện ích (và sử dụng sx prop) trong đoạn code trên, bạn sẽ tạo được cấu trúc cột linh hoạt một cách hiệu quả. Đoạn code trên sẽ tạo ra trang đăng nhập React sau trong trình duyệt của bạn:
+
+<Image
+  src="/blogs/material-ui-la-gi-5.jpg"
+  alt="Material-UI"
+  width="718"
+  height="404"
+  sizes="100vw"
+/>
+
+## Thành phần MUI Grid là gì?
+
+Grid là một thành phần MUI hữu ích khác cần tìm hiểu. Nó nằm trong danh mục layout của MUI và tạo điều kiện cho khả năng phản hồi. Nó cho phép nhà phát triển đạt được thiết kế mang tính đáp ứng nhờ hệ thống bố cục 12 cột. Hệ thống bố cục này sử dụng 5 breakpoint mặc định của MUI để tạo các ứng dụng thích ứng với mọi kích thước màn hình. Các breakpoint này bao gồm:
+
+- xs (cực nhỏ và bắt đầu từ 0px)
+- sm (nhỏ và bắt đầu từ 600px)
+- md (trung bình và bắt đầu từ 900px)
+- lg (lớn và bắt đầu từ 1200px)
+- xl (cực lớn và bắt đầu từ 1536px)
+
+Thành phần MUI Grid hoạt động giống như thuộc tính CSS flexbox ở chỗ nó có hệ thống cha-con một chiều dựa trên hai loại bố cục - container (cha) và các item (con). Tuy nhiên, thành phần MUI Grid tạo điều kiện cho một lưới lồng nhau, nơi một item cũng có thể là một container.
+
+## Kết luận
+
+Bài viết này hướng dẫn bạn cách cài đặt và sử dụng thư viện MUI trong các ứng dụng React . Bạn học cách sử dụng một số thành phần cơ bản (chẳng hạn như Typography) và một số thành phần cấu trúc nâng cao hơn (như thành phần Box).
+
+Thư viện MUI rất dễ sử dụng, hiệu quả và hoạt động tốt với các ứng dụng React. Nhưng điều đó không có nghĩa đó là tùy chọn tạo kiểu duy nhất dành cho các nhà phát triển React. Nếu đang xây dựng ứng dụng React, bạn có thể thoải mái sử dụng thư viện MUI hoặc bất kỳ framework CSS nào để tạo kiểu cho ứng dụng của mình.
