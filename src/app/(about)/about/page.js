@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Giới thiệu",
-  description: `Here are some details about my self.`,
+  description: `Giới thiệu về bản thân tôi, kỹ năng và kinh nghiệm làm việc.`,
 };
 
 export default function About() {

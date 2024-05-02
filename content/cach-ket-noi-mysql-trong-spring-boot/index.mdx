@@ -1,0 +1,161 @@
+---
+title: "Cách kết nối cơ sở dữ liệu MySQL trong Spring Boot"
+description: "Hướng dẫn cách kết nối cơ sở dữ liệu MySQL trong Spring Boot"
+image: "../../public/blogs/spring-data-jpa.png"
+publishedAt: "2024-11-12"
+updatedAt: "2024-04-12"
+author: "Gia Bao"
+isPublished: true
+tags:
+- spring boot
+- mysql
+---
+
+## Giới thiệu
+
+Để đi tiếp trong series Spring Boot này, tôi không thể bỏ qua một phần quan trọng đó là giao tiếp với Database.
+
+Vì thiếu phần kết nối với Database nên chúng ta chưa thể hoàn thiện được trang Web của mình, trong bài này chúng ta sẽ tìm hiểu Spring Boot JPA.
+
+Trong bài có đề cập kiến thức:
+
+1. Hibernate 
+2. Lombok
+
+## Spring Boot JPA
+
+**Spring Boot** JPA là một phần trong hệ sinh thái Spring Data, nó tạo ra một layer ở giữa tầng service và database, giúp chúng ta thao tác với database một cách dễ dàng hơn, tự động config và giảm thiểu code thừa thãi.
+
+**Spring Boot** JPA đã wrapper Hibernate và tạo ra một interface mạnh mẽ. Nếu như bạn gặp khó khăn khi làm việc với Hibernate thì đừng lo, bạn hãy để 1**Spring JPA** làm hộ.
+
+## Cài đặt
+
+Để thêm Spring JPA vào project, bạn cần thêm dependency `spring-boot-starter-data-jpa`.
+
+Ngoài ra, để connect tới MySql, chúng ta cần driver tương ứng, vì vậy phải bổ sung thêm cả dependency `mysql-connector-java` vào pom.xml.
+
+pom.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>me.loda.spring</groupId>
+    <artifactId>spring-boot-learning</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-learning</name>
+    <description>Everything about Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!--spring mvc, rest-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--spring jpa-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- mysql connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
+
+## Tạo Table và dữ liệu
+
+Trước khi bắt đầu, chúng ta cần tạo ra dữ liệu trong Database. Ở đây tôi chọn `MySQL`.
+
+Dưới đây là SQL Script để tạo DATABASE `micro_db`. Chứa một TABLE duy nhất là `Use`.
+
+Khi chạy script này, nó sẽ tự động insert vào db 100 `User`.
+
+```sql
+CREATE DATABASE micro_db;
+use micro_db;
+CREATE TABLE `user`
+(
+  `id`         bigint(20) NOT NULL      AUTO_INCREMENT,
+  `hp`   		int  NULL          DEFAULT NULL,
+  `stamina`    int                  DEFAULT NULL,
+  `atk`      int                    DEFAULT NULL,
+  `def`      int                    DEFAULT NULL,
+  `agi`      int                    DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+```sql
+DELIMITER $$
+CREATE PROCEDURE generate_data()
+BEGIN
+  DECLARE i INT DEFAULT 0;
+  WHILE i < 100 DO
+    INSERT INTO `user` (`hp`,`stamina`,`atk`,`def`,`agi`) VALUES (i,i,i,i,i);
+    SET i = i + 1;
+  END WHILE;
+END$$
+DELIMITER ;
+
+CALL generate_data();
+```
+
+## Tạo Model User
+
+Khi đã có dữ liệu trong Database. Chúng ta sẽ tạo một Class trong Java để mapping thông tin.
+
+Phần này chúng ta cần có một chút kiến thức về Hibernate. Nếu bạn chưa biết những Annotation ở dưới đây để làm gì thì hãy tạm dừng và [tìm hiểu Hibernate tại đây]().
+
+User.java
+```java
+@Entity
+@Table(name = "user")
+@Data
+public class User implements Serializable {
+    private static final long serialVersionUID = -297553281792804396L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // Mapping thông tin biến với tên cột trong Database
+    @Column(name = "hp")
+    private int hp;
+    @Column(name = "stamina")
+    private int stamina;
+
+    // Nếu không đánh dấu @Column thì sẽ mapping tự động theo tên biến
+    private int atk;
+    private int def;
+    private int agi;
+}
+```
+
