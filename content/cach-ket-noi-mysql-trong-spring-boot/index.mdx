@@ -2,7 +2,7 @@
 title: "Cách kết nối cơ sở dữ liệu MySQL trong Spring Boot"
 description: "Hướng dẫn cách kết nối cơ sở dữ liệu MySQL trong Spring Boot"
 image: "../../public/blogs/spring-data-jpa.png"
-publishedAt: "2024-11-12"
+publishedAt: "2024-01-02"
 updatedAt: "2024-04-12"
 author: "Gia Bao"
 isPublished: true
@@ -15,7 +15,7 @@ tags:
 
 Để đi tiếp trong series Spring Boot này, tôi không thể bỏ qua một phần quan trọng đó là giao tiếp với Database.
 
-Vì thiếu phần kết nối với Database nên chúng ta chưa thể hoàn thiện được trang Web của mình, trong bài này chúng ta sẽ tìm hiểu Spring Boot JPA.
+Vì thiếu phần kết nối với Database nên chúng ta chưa thể hoàn thiện sđược trang Web của mình, trong bài này chúng ta sẽ tìm hiểu Spring Boot JPA.
 
 Trong bài có đề cập kiến thức:
 
@@ -159,3 +159,195 @@ public class User implements Serializable {
 }
 ```
 
+Tới đây là chúng ta làm được nửa đường rồi.
+
+## Vấn đề của Hibernate truyền thống
+
+Thông thường, khi bạn đã định nghĩa Entity tương ứng với Table trong DB thông qua Hibernate. Thì nhiệm vụ tiếp theo sẽ là tạo ra các class thao tác với DB.
+ 
+Ví dụ muốn query lấy tất cả User bằng Hibernate truyền thống sẽ như sau:
+
+```java
+// Giả sử đã có đối tượng session rồi
+Session session = getSession();
+
+try {
+    // Tất cả các lệnh hành động với DB thông qua Hibernate
+    // đều phải nằm trong 1 giao dịch (Transaction)
+    // Bắt đầu giao dịch
+    session.getTransaction().begin();
+
+    // Tạo một query
+
+    String sql = "Select u from " + User.class.getName() + " u ";
+
+    // Tạo đối tượng Query.
+    Query<User> query = session.createQuery(sql);
+
+    // Thực hiện truy vấn và lấy ra dữ liệu.
+    List<User> users = query.getResultList();
+
+    // In ra màn hình
+    for (User user : users) {
+        System.out.println(user);
+    }
+
+    // Commit dữ liệu và kết thúc session.
+    session.getTransaction().commit();
+} catch (Exception e) {
+    e.printStackTrace();
+    // Rollback trong trường hợp có lỗi xẩy ra.
+    session.getTransaction().rollback();
+}
+```
+
+Mặc dù Hibernate đã làm rất tốt và giảm thiểu code cho việc thao tác với Database xuống rồi, những nó vẫn chưa hẳn là dễ dàng :(
+
+Mục đích ban đầu của Hibernate là giúp người lập trình dễ sử dụng, tuy nhiên, trên thực tế, nhiều người gặp khó khăn trong việc sử dụng với Hibernate hơn cả `jdbc`.
+
+Nắm được vấn đề này, **Spring Data** đã wrapper lên Hibernate một lớp nữa gọi là **Spring JPA**, giúp cho mọi thao tác với DB của chúng ta rút ngắn xuống còn 1 dòng và tất nhiên là làm mờ Hibernate xuống đáng kể để tránh rắc rối cho người lập trình.
+
+## JpaRepository
+
+Để sử dụng **Spring JPA**, bạn cần sử dụng interface `JpaRepository`.
+
+Yêu cầu của interface này đó là bạn phải cung cấp 2 thông tin:
+
+1. Entity (Đối tượng tương ứng với Table trong DB)
+2. Kiểu dữ liệu của khóa chính (primary key)
+
+Ví dụ: Tôi muốn lấy thông tin của bảng `User` thì làm như sau:
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+
+Vậy thôi, @Repository đánh dấu `UserRepository` là một Bean và chịu trách nhiệm giao tiếp với DB.
+
+**Spring Boot** sẽ tự tìm thấy và khởi tạo ra đối tượng UserRepository trong Context. Việc tạo ra UserRepository hoàn toàn tự động và tự config, vì chúng ta đã kế thừa JpaRepository.
+
+Bây giờ, việc lấy ra toàn bộ User sẽ như sau:
+
+```java
+@Autowired
+UserRepository userRepository;
+
+userRepository.findAll()
+                .forEach(System.out::println);
+```
+
+Đơn giản và ngắn gọn hơn rất nhiều.
+
+Nếu bạn tìm kiếm thì sẽ thấy `UserRepository` có hàng chục method mà chúng ta không cần viết lại nữa. Vì nó kế thừa `JpaRepository` rồi.
+
+## Demo
+
+Bây giờ chúng ta sẽ làm ứng dụng Demo các tính năng cơ bản với JpaRepository
+
+Bước đầu tiên là config thông tin về MySQL trong application.properties
+
+application.properties
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/micro_db?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=root
+
+
+## Hibernate Properties
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = update
+
+logging.level.org.hibernate = ERROR
+```
+
+**Spring JPA** sẽ tự kết nối cho chúng ta, mà không cần thêm một đoạn code nào cả.
+User.java
+```java
+@Entity
+@Table(name = "user")
+@Data
+public class User implements Serializable {
+    private static final long serialVersionUID = -297553281792804396L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // Mapping thông tin biến với tên cột trong Database
+    @Column(name = "hp")
+    private int hp;
+    @Column(name = "stamina")
+    private int stamina;
+
+    // Nếu không đánh dấu @Column thì sẽ mapping tự động theo tên biến
+    private int atk;
+    private int def;
+    private int agi;
+}
+```
+
+App.java
+```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import lombok.RequiredArgsConstructor;
+
+@SpringBootApplication
+@RequiredArgsConstructor
+public class App {
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(App.class, args);
+        UserRepository userRepository = context.getBean(UserRepository.class);
+
+        // Lấy ra toàn bộ user trong db
+        userRepository.findAll()
+                      .forEach(System.out::println);
+
+        // Lưu user xuống database
+        User user = userRepository.save(new User());
+        // Khi lưu xong, nó trả về User đã lưu kèm theo Id.
+        System.out.println("User vừa lưu có ID: " + user.getId());
+        Long userId = user.getId();
+        // Cập nhật user.
+        user.setAgi(100);
+        // Update user
+        // Lưu ý, lúc này đối tượng user đã có Id. 
+        // Nên nó sẽ update vào đối tượng có Id này 
+        // chứ không insert một bản ghi mới
+        userRepository.save(user);
+
+        // Query lấy ra user vừa xong để kiểm tra xem.
+        User user2 = userRepository.findById(userId).get();
+        System.out.println("User: " + user);
+        System.out.println("User2: " + user2);
+
+        // Xóa User khỏi DB
+        userRepository.delete(user);
+
+        // In ra kiểm tra xem userId còn tồn tại trong DB không
+        User user3 = userRepository.findById(userId).orElse(null);
+        System.out.println("User3: " + user2);
+
+    }
+}
+```
+
+OUTPUT chương trình:
+
+```
+User vừa lưu có ID: 104
+// sau khi update, cả 2 đối tượng user đều có giá trị agi mới
+User: User(id=104, hp=0, stamina=0, atk=0, def=0, agi=100)
+User2: User(id=104, hp=0, stamina=0, atk=0, def=0, agi=100)
+// Sau khi xóa, user không còn tồn tại
+User3: null
+```
