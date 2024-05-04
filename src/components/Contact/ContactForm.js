@@ -5,8 +5,8 @@ import siteMetadata from "@/src/utils/siteMetaData";
 export default function ContactForm() {
   return (
     <div className="mt-12 text-base xs:text-lg sm:text-xl font-medium leading-relaxed font-in">
-      Nếu có những bài viết hay ho hoặc bạn muốn trao đổi với mình, hãy liên hệ
-      với mình qua email dưới đây.
+      Nếu có những Blog hay ho hoặc bạn muốn trao đổi với Devful, hãy liên hệ
+      với chúng mình qua email dưới đây.
       <a
         href={siteMetadata.gmail}
         rel="noopener noreferrer"
