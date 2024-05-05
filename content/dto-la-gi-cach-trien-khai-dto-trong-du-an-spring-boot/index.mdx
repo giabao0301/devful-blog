@@ -1,0 +1,97 @@
+---
+title: "DTO là gì? Cách triển Khai DTO trong Dự Án Spring Boot: Tách Rời Dữ Liệu và Logic"
+description: "Trong Blog này, hãy cùng Devful tìm hiểu về DTO là gì, cách triển khai DTO trong dự án Spring Boot, và tại sao chúng ta cần sử dụng DTO trong dự án Spring Boot."
+image: "../../public/blogs/dto.png"
+publishedAt: "2022-11-12"
+updatedAt: "2022-11-12"
+author: "gia bao"
+isPublished: true
+tags:
+- spring boot
+- java
+- dto
+---
+
+## DTO là gì?
+
+DTO là viết tắt của Data Transfer Object. Trong Java, DTO là một mẫu thiết kế phổ biến được sử dụng trong lập trình để đóng gói dữ liệu và chuyển đổi dữ liệu giữa các thành phần của ứng dụng, chẳng hạn như giữa các lớp hoặc giữa máy chủ và máy khách.
+
+Mục đích chính của DTO là chứa dữ liệu với các trường dữ liệu cụ thể và không chứa logic kinh doanh. DTO thường được sử dụng trong các ứng dụng phân tán, nơi cần truyền dữ liệu giữa các thành phần khác nhau, nhưng việc truyền trực tiếp các đối tượng thực thể (Entity) không phải lúc nào cũng là lựa chọn tốt, do đó sử dụng DTO giúp tách rời dữ liệu từ logic và giảm sự phụ thuộc giữa các thành phần của hệ thống.
+
+## Cách triển khai DTO trong dự án Spring Boot
+
+Trong dự án Spring Boot, triển khai DTO thường đi kèm với việc sử dụng các thư viện như ModelMapper hoặc MapStruct để thực hiện ánh xạ giữa DTO và các đối tượng thực thể (Entity).
+
+Dưới đây là các bước cơ bản để triển khai DTO trong dự án Spring Boot:
+
+### Bước 1: Định nghĩa DTO
+
+Tạo các lớp DTO với các trường tương ứng với dữ liệu mà bạn muốn chuyển đổi hoặc truyền.
+
+```java
+public class UserDTO {
+    private Long id;
+    private String username;
+    private String email;
+
+    // Getters and setters
+}
+```
+
+### Bước 2: Ánh xạ giữa DTO và Entity
+
+Sử dụng ModelMapper hoặc MapStruct để ánh xạ dữ liệu giữa DTO và Entity. Điều này giúp giảm thời gian và công sức cần thiết để thực hiện việc này thủ công.
+
+Để tìm hiểu cách sử dụng ModelMapper hoặc MapStruct, bạn có thể tham khảo bài viết (Cách sử dụng ModelMapper trong spring boot)[] tại Devful.
+
+### Bước 3: Sử dụng DTO trong Controller
+
+Trong các phương thức của Controller, sử dụng DTO để truyền dữ liệu giữa các tầng của ứng dụng.
+
+```java
+@RestController
+public class UserController {
+    private final UserService userService;
+    private final ModelMapper modelMapper;
+
+    public UserController(UserService userService, ModelMapper modelMapper) {
+        this.userService = userService;
+        this.modelMapper = modelMapper;
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+        return ResponseEntity.ok(userDTO);
+    }
+
+    // Other controller methods
+}
+```
+
+### Bước 4: Validation của DTO
+
+Bạn có thể sử dụng các annotation như `@Valid` để kiểm tra tính hợp lệ của dữ liệu đầu vào từ DTO.
+
+### Bước 5: Truyền DTO vào Service và Repository
+
+Trong các lớp Service và Repository, sử dụng DTO để thực hiện các thao tác với cơ sở dữ liệu.
+
+Đảm bảo rằng bạn đã cấu hình đúng các thư viện như ModelMapper hoặc MapStruct trong dự án Spring Boot của mình để sử dụng chúng cho việc ánh xạ giữa DTO và Entity.
+
+## Tại sao chúng ta cần sử dụng DTO trong dự án Spring Boot?
+
+1. **Tách rời dữ liệu và logic**: Sử dụng DTO giúp tách rời dữ liệu từ logic kinh doanh, giúp mã nguồn dễ đọc, bảo trì và mở rộng.
+
+2. **Giảm sự phụ thuộc giữa các thành phần**: Sử dụng DTO giúp giảm sự phụ thuộc giữa các thành phần của hệ thống, giúp dễ dàng thay đổi mà không ảnh hưởng đến các thành phần khác.
+
+3. **Truyền dữ liệu giữa các tầng**: DTO giúp truyền dữ liệu giữa các tầng của ứng dụng một cách dễ dàng và hiệu quả.
+
+4. **Validation dữ liệu**: Sử dụng DTO giúp kiểm tra tính hợp lệ của dữ liệu đầu vào từ người dùng.
+
+5. **Ánh xạ dữ liệu**: Sử dụng DTO kết hợp với các thư viện như ModelMapper hoặc MapStruct giúp thực hiện ánh xạ dữ liệu giữa DTO và Entity một cách dễ dàng.
+
+Trên đây là một số lý do chúng ta cần sử dụng DTO trong dự án Spring Boot. Hy vọng bài viết này giúp bạn hiểu rõ hơn về DTO và cách triển khai chúng trong dự án của mình.
+
+
