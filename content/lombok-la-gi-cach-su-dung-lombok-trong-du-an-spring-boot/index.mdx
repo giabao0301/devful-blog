@@ -1,0 +1,79 @@
+---
+title: "Lombok là gì? Cách sử dụng Lombok trong dự án Spring Boot"
+description: "Lombok là một thư viện Java giúp giảm bớt việc viết code boilerplate, giúp code sạch hơn, dễ đọc hơn. Trong bài viết này, chúng ta sẽ tìm hiểu về Lombok là gì và cách sử dụng Lombok trong dự án Spring Boot."
+image: "../../public/blogs/lombok-logo.png"
+publishedAt: "2022-11-12"
+updatedAt: "2022-11-12"
+author: "Gia Bao"
+isPublished: true
+tags:
+- Java
+- Spring Boot
+- Lombok
+---
+
+Chào mừng bạn đến với Blog của Devful! Trong bài viết này, chúng tôi sẽ giới thiệu và hướng dẫn bạn cách sử dụng Lombok trong dự án Java Spring Boot của mình. Lombok là một thư viện Java giúp giảm bớt code boilerplate bằng cách tự động sinh ra các phương thức getter, setter, constructor và nhiều hơn nữa. Điều này giúp tăng hiệu suất phát triển và giảm thiểu lỗi.
+
+## Giới thiệu về Lombok
+
+Lombok là một thư viện Java được sử dụng phổ biến trong cộng đồng Java. Nó giúp giảm thiểu việc phải viết các phương thức getter, setter, constructor và các phương thức khác trong các lớp Java thông thường. Thay vào đó, Lombok sử dụng các annotation để tự động sinh ra mã cho chúng. Điều này giúp làm tăng sự đơn giản và rõ ràng của mã nguồn, giảm thiểu lỗi và tiết kiệm thời gian cho nhà phát triển.
+
+## Cài đặt Lombok trong Dự án Spring Boot
+
+Để bắt đầu sử dụng Lombok trong dự án Spring Boot của bạn, bạn cần thêm dependency của Lombok vào file `pom.xml` hoặc `build.gradle` của dự án của mình.
+
+**Maven:**
+Thêm dependency sau vào file `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.22</version> <!-- Version có thể khác -->
+    <scope>provided</scope>
+</dependency>
+```
+
+**Gradle:**
+
+Thêm dependency sau vào file `build.gradle`:
+
+```gradle
+compileOnly 'org.projectlombok:lombok:1.18.22' // Version có thể khác
+annotationProcessor 'org.projectlombok:lombok:1.18.22'
+```
+
+Sau khi thêm dependency, bạn cần đảm bảo rằng IDE của bạn hỗ trợ Lombok. Đối với IntelliJ IDEA, bạn cần cài đặt plugin "Lombok" từ Marketplace.
+
+## Sử dụng Lombok trong Dự án Spring Boot
+
+Bây giờ, bạn đã có thể sử dụng Lombok trong dự án Spring Boot của mình. Dưới đây là một số annotation phổ biến mà bạn có thể sử dụng:
+
+- `@Getter` và `@Setter`: Tự động sinh ra các phương thức getter và setter cho các trường.
+- `@NoArgsConstructor`, `@RequiredArgsConstructor`, và `@AllArgsConstructor`: Tự động sinh ra constructor không có tham số, constructor có tham số cho các trường được đánh dấu là `final`, và constructor có tham số cho tất cả các trường.
+- `@ToString`: Tự động sinh ra phương thức `toString()`.
+
+Dưới đây là một ví dụ đơn giản về cách sử dụng Lombok trong một lớp Entity trong dự án Spring Boot:
+
+```java
+import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+@Data
+public class Product {
+    @Id
+    private Long id;
+    private String name;
+    private double price;
+}
+```
+
+Như bạn có thể thấy, chúng ta không cần phải viết các phương thức getter, setter, constructor hoặc phương thức `toString()` cho lớp `Product`. Lombok sẽ tự động sinh ra chúng cho chúng ta.
+
+## Kết luận
+
+Trong bài viết này, chúng tôi đã giới thiệu và hướng dẫn bạn cách sử dụng Lombok trong dự án Java Spring Boot của mình. Lombok là một công cụ mạnh mẽ giúp giảm bớt code boilerplate và tăng hiệu suất phát triển. Hy vọng rằng bạn đã tìm thấy bài viết này hữu ích và có thể áp dụng Lombok vào dự án của mình. Cảm ơn bạn đã đọc!
+
+
