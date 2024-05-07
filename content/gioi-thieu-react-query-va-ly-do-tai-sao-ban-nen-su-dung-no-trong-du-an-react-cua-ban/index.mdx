@@ -1,0 +1,69 @@
+---
+title: "Giới thiệu react-query và Lý do tại sao bạn nên sử dụng nó trong dự án React của bạn"
+description: "Trong bài viết này, chúng ta sẽ tìm hiểu về react-query là gì, cách sử dụng react-query trong dự án React của bạn và lý do tại sao bạn nên sử dụng nó."	
+image: "../../public/blogs/react-query-logo.png"
+publishedAt: "2022-11-12"
+updatedAt: "2022-11-12"
+author: "gia bao"
+isPublished: true
+tags: 
+- reactjs
+- react-query
+---
+
+Bạn có nghe nhiều lời đồn về react-query chưa? Đây là một thư viện không thể thiếu cho các dự án React hiện đại. Nhưng tại sao lại cần sử dụng react-query khi chúng ta có thể dùng `useEffect` để fetch dữ liệu từ API? Bài viết này sẽ giải đáp thắc mắc đó.
+
+## React-query là gì?
+
+Theo README của react-query:
+
+> "Hooks for fetching, caching, and updating asynchronous data in React."
+
+Đơn giản thì react-query là một thư viện giúp bạn fetch, cache và cập nhật dữ liệu bất đồng bộ trong React.
+
+## Tại sao nên sử dụng react-query?
+
+Trước đây, để fetch dữ liệu từ server, có nhiều cách khác nhau. Một số cách phổ biến là sử dụng `useEffect` và `useState` hoặc sử dụng thư viện quản lý state như Redux. Nhưng cách này khá rườm rà và đòi hỏi bạn phải viết nhiều code chỉ để fetch và hiển thị dữ liệu.
+
+**Sử dụng react-query**
+
+React-query cung cấp những hooks với API đơn giản để fetch và cập nhật dữ liệu từ server. Nó hỗ trợ caching, refetching và nhiều tính năng khác.
+
+## Sử dụng useQuery
+
+Để sử dụng hook `useQuery`, bạn cần truyền ít nhất hai tham số:
+
+1. Tham số đầu tiên là `queryKey`.
+2. Tham số thứ hai là một hàm trả về một promise (resolve data hoặc throw error).
+3. Tham số thứ ba là các options.
+
+`queryKey` được sử dụng để refetch, cache và chia sẻ dữ liệu giữa các component. Dưới đây là một ví dụ cơ bản:
+
+```javascript
+const { data, isLoading, isError } = useQuery(
+  'todo',
+  () => fetch('https://example/api/todo').then(response => response.json())
+);
+```
+
+## Sử dụng useMutation
+
+Khác với `useQuery`, `useMutation` được sử dụng để tạo/thay đổi/xóa dữ liệu. Dưới đây là một ví dụ:
+
+```javascript
+const mutation = useMutation(
+  newTodo => axios.post('/todos', newTodo)
+);
+```
+
+## Ví dụ thực tế
+
+React-query có thể được sử dụng trong nhiều tình huống thực tế như prefetching dữ liệu và cập nhật giao diện người dùng một cách tự động.
+
+## Kết luận
+
+React-query là một thư viện mạnh mẽ và linh hoạt cho việc quản lý dữ liệu bất đồng bộ trong React. Bài viết này đã cung cấp một cái nhìn tổng quan về react-query và một số ứng dụng thực tế của nó. Đừng ngần ngại thử nghiệm và khám phá thêm về react-query để tận dụng tối đa sức mạnh của nó trong dự án của bạn.
+
+
+
+
