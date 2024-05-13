@@ -1,0 +1,99 @@
+---
+title: "Giới thiệu và Hướng dẫn Sử dụng Redux Toolkit trong ReactJS"
+description: "  "
+image: "../../public/blogs/redux.png"
+publishedAt: "2022-11-12"
+updatedAt: "2022-11-12"
+author: "gia bảo"
+isPublished: true
+tags:
+- reactjs
+- redux
+- redux-toolkit
+---
+
+Bạn đã từng gặp phải những thách thức khi quản lý trạng thái (state) của ứng dụng ReactJS của mình? Nếu câu trả lời là "Có," thì Redux Toolkit là công cụ mà bạn không thể bỏ qua. Trong bài viết này, hãy cùng Devful khám phá Redux Toolkit và cách sử dụng nó để quản lý trạng thái một cách hiệu quả trong ứng dụng ReactJS.
+
+## Redux Toolkit là gì?
+
+Redux Toolkit là một tập hợp các công cụ giúp đơn giản hóa việc sử dụng Redux trong ứng dụng ReactJS. Nó giúp bạn viết mã ít và dễ đọc hơn, giảm bớt boilerplate code và cung cấp các công cụ mạnh mẽ cho việc quản lý trạng thái ứng dụng.
+
+## Cách Sử dụng Redux Toolkit
+
+### Bước 1: Cài đặt Redux Toolkit
+
+Bắt đầu bằng việc cài đặt Redux Toolkit thông qua npm hoặc yarn:
+
+```bash
+npm install @reduxjs/toolkit
+# hoặc
+yarn add @reduxjs/toolkit
+```
+
+### Bước 2: Tạo Slice
+
+Slice là một phần của Redux Toolkit, đại diện cho một phần của trạng thái ứng dụng và chứa các reducer và actions tương ứng. Dưới đây là cách tạo một slice:
+
+```javascript
+// counterSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: {
+    value: 0,
+  },
+  reducers: {
+    increment(state) {
+      state.value += 1;
+    },
+    decrement(state) {
+      state.value -= 1;
+    },
+  },
+});
+
+export const { increment, decrement } = counterSlice.actions;
+export default counterSlice.reducer;
+```
+
+### Bước 3: Tạo Store
+
+Tiếp theo, tạo store Redux bằng cách kết hợp các slice lại với nhau:
+
+```javascript
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
+
+export default configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+```
+
+### Bước 4: Kết nối Store với ứng dụng React
+
+Cuối cùng, kết nối Redux store với ứng dụng React bằng cách sử dụng `<Provider>` từ `react-redux`:
+
+```javascript
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store';
+import App from './App';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+## Kết luận
+
+Redux Toolkit là một công cụ mạnh mẽ để quản lý trạng thái trong ứng dụng ReactJS của bạn. Bằng cách giảm bớt boilerplate code và cung cấp các công cụ linh hoạt, Redux Toolkit giúp bạn viết mã sạch sẽ và dễ bảo trì. Hãy bắt đầu sử dụng Redux Toolkit ngay hôm nay để cải thiện trải nghiệm phát triển của bạn!
+
