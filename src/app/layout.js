@@ -71,7 +71,6 @@ export default function RootLayout({ children }) {
           "font-mr bg-light dark:bg-dark"
         )}
       >
-        <CommentPlugin />
         <Header />
         {children}
         <Footer />

@@ -100,7 +100,7 @@ const Footer = () => {
         <div className="text-center">
           Made with &hearts; by &nbsp;
           <a
-            href="https://devdreaming.com"
+            href="https://devful-blog.vercel.app/"
             className="underline"
             target="_blank"
           >
