@@ -1,6 +1,7 @@
 import BlogDetails from "@/src/components/Blog/BlogDetails";
 import BlogLayoutThree from "@/src/components/Blog/BlogLayoutThree";
 import RenderMdx from "@/src/components/Blog/RenderMdx";
+import Comment from "@/src/components/Comment/Comment";
 import Tag from "@/src/components/Elements/Tag";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { allBlogs } from "contentlayer/generated";
@@ -168,9 +169,10 @@ export default function BlogPage({ params }) {
           </div>
           <RenderMdx blog={blog} />
         </div>
-        <div className="w-full  mt-16 sm:mt-24  md:mt-32 px-5 sm:px-10 md:px-24  sxl:px-32 flex flex-col items-center justify-center">
+
+        <div className="w-full mt-16 sm:mt-24  md:mt-32 px-5 sm:px-10 md:px-24  sxl:px-32 flex flex-col items-center justify-center">
           <span className="text-5xl">Bài viết tương tự</span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-16 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-rows-1 gap-16 mt-16">
             {relatedBlogs.map((blog, index) => {
               return (
                 <article key={index} className="col-span-1 row-span-1 relative">
@@ -179,6 +181,9 @@ export default function BlogPage({ params }) {
               );
             })}
           </div>
+        </div>
+        <div className="mx-10 mt-24 p-10 border-t border-[#d5d5d5]">
+          <Comment />
         </div>
       </article>
     </>
