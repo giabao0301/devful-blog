@@ -79,6 +79,9 @@ const Header = () => {
         <Link href="/about" className="mx-2">
           Giới thiệu
         </Link>
+        <Link href="/categories/all" className="mx-2">
+          Bài viết
+        </Link>
         <Link href="/contact" className="mx-2">
           Liên hệ
         </Link>
@@ -93,6 +96,9 @@ const Header = () => {
         </Link>
         <Link href="/about" className="mx-4">
           Giới thiệu
+        </Link>
+        <Link href="/categories/all" className="mx-2">
+          Bài viết
         </Link>
         <Link href="/contact" className="mx-4">
           Liên hệ

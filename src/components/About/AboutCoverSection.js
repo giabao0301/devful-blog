@@ -24,6 +24,14 @@ const AboutCoverSection = () => {
           chia sẻ những kiến thức mới nhất và hữu ích nhất về lập trình cho cộng
           đồng lập trình viên và những người muốn tìm hiểu về lĩnh vực này.
         </p>
+        <p className="font-medium mt-4 text-base">
+        Ngoài ra, nếu bạn cần hỗ trợ thêm về các vấn đề máy tính, công nghệ thông tin
+        thì hãy đến với 
+        <span style={{ fontWeight: 'bolder', fontStyle: 'italic' }}>
+          Trung tâm hỗ trợ và dịch vụ máy tính Devful
+        </span>
+        . Đội ngũ kỹ thuật viên tại đây rất chuyên nghiệp và luôn sẵn sàng hỗ trợ khách hàng một cách tận tình.
+        </p>
       </div>
     </section>
   );
