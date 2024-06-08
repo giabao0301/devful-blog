@@ -1,13 +1,13 @@
-import BlogDetails from "@/src/components/Blog/BlogDetails";
-import BlogLayoutThree from "@/src/components/Blog/BlogLayoutThree";
-import RenderMdx from "@/src/components/Blog/RenderMdx";
-import Tag from "@/src/components/Elements/Tag";
-import siteMetadata from "@/src/utils/siteMetaData";
-import { allBlogs } from "contentlayer/generated";
+import BlogDetails from "../../../components/Blog/BlogDetails";
+import BlogLayoutThree from "../../../components/Blog/BlogLayoutThree";
+import RenderMdx from "../../../components/Blog/RenderMdx";
+import Tag from "../../../components/Elements/Tag";
+import siteMetadata from "../../../utils/siteMetaData";
+import { allBlogs } from "../../../../.contentlayer/generated";
 import { slug } from "github-slugger";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import CommentsExample from "@/src/components/Comments/Comments";
+import CommentsExample from "../../../components/Comments/Comments";
 
 export async function generateStaticParams() {
   return allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }));

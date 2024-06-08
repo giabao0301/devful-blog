@@ -1,7 +1,7 @@
-import ContactForm from "@/src/components/Contact/ContactForm";
-import siteMetadata from "@/src/utils/siteMetaData";
+import ContactForm from "../../../components/Contact/ContactForm";
+import siteMetadata from "../../../utils/siteMetaData";
 import Image from "next/image";
-import contactImage from "../../../../public/contact.jpg";
+import contactImage from "../../../../public/contact-devful.jpg";
 
 export const metadata = {
   title: "Liên hệ",

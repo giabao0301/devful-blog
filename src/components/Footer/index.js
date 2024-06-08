@@ -10,7 +10,7 @@ import {
   YoutubeIcon,
 } from "../Icons";
 import Link from "next/link";
-import siteMetadata from "@/src/utils/siteMetaData";
+import siteMetadata from "../../utils/siteMetaData";
 
 const Footer = () => {
   const {
@@ -23,10 +23,12 @@ const Footer = () => {
 
   return (
     <footer className="mt-16 rounded-2xl bg-dark dark:bg-accentDark/90 m-2 sm:m-10 flex flex-col items-center text-light dark:text-dark">
-      <h3 className="mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl px-4">
+    <section className="flex flex-col md:flex-row gap-x-52">
+     <div className="flex flex-col items-center">  
+      <h3 className="mt-16 font-medium dark:font-bold text-center capitalize text-2xl sm:text-3xl lg:text-4xl ">
         Đăng ký nhận bản tin
       </h3>
-      <p className="mt-5 px-4 text-center w-full sm:w-3/5 font-light dark:font-medium text-sm sm:text-base">
+      <p className="mt-5 px-4 text-center w-full font-light dark:font-medium text-sm sm:text-base">
         Nhận thông báo về bài viết mới nhất
       </p>
 
@@ -86,6 +88,16 @@ const Footer = () => {
           <YoutubeIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>
+    </div>
+
+    <div className="mt-28">
+      <h4 className="font-semibold dark:font-bold text-xl mb-2">Thông tin liên hệ</h4>
+      <p>Email: devful@gmail.com</p>
+      <p>Hotline: +84 93 512 68 68</p>
+      <p>Địa chỉ: Khu phố 6, Thủ Đức, TP.HCM</p>
+      <p>Giờ làm việc: 24/7</p>
+    </div>
+    </section> 
 
       <div className="w-full  mt-16 md:mt-24 relative font-medium  py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
         <span className="text-center">

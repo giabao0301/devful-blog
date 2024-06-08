@@ -11,9 +11,9 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "../Icons";
-import siteMetadata from "@/src/utils/siteMetaData";
+import siteMetadata from "../../utils/siteMetaData";
 import { useState } from "react";
-import { cx } from "@/src/utils";
+import { cx } from "../../utils";
 
 const Header = () => {
   const [click, setClick] = useState(false);

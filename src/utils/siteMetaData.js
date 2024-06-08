@@ -9,7 +9,7 @@ const siteMetadata = {
   theme: "system", // system, dark or light
   siteUrl: "https://devful-blog.vercel.app/", // your website URL
   siteLogo: "/logo.png",
-  socialBanner: "/social-banner.png", // add social banner in the public folder
+  socialBanner: "/social-banner-devful.png", // add social banner in the public folder
   email: "trinhpao246@gmail.com",
   github: "https://github.com/giabao0301",
   twitter: "https://twitter.com/",

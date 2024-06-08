@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
-import siteMetadata from "@/src/utils/siteMetaData";
+import siteMetadata from "../../utils/siteMetaData";
 
 export default function ContactForm() {
   return (
     <div className="mt-12 text-base xs:text-lg sm:text-xl font-medium leading-relaxed font-in">
       Nếu có những Blog hay ho hoặc bạn muốn trao đổi với Devful, hãy liên hệ
-      với chúng mình qua email dưới đây.
+      với chúng mình qua email dưới đây hoặc qua các thông tin sau:
+      <p>Hotline: +84 93 512 68 68</p>
+      <p>Địa chỉ: Khu phố 6, Thủ Đức, TP.HCM</p>
       <a
         href={siteMetadata.gmail}
         rel="noopener noreferrer"

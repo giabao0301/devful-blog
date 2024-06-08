@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import profileCharacter from "../../../public/character.png";
+import profileCharacter from "../../../public/character-devful.png";
 
 const AboutCoverSection = () => {
   return (
@@ -28,7 +28,7 @@ const AboutCoverSection = () => {
         Ngoài ra, nếu bạn cần hỗ trợ thêm về các vấn đề máy tính, công nghệ thông tin
         thì hãy đến với 
         <span style={{ fontWeight: 'bolder', fontStyle: 'italic' }}>
-          Trung tâm hỗ trợ và dịch vụ máy tính Devful
+        {" "}Trung tâm hỗ trợ và dịch vụ máy tính Devful
         </span>
         . Đội ngũ kỹ thuật viên tại đây rất chuyên nghiệp và luôn sẵn sàng hỗ trợ khách hàng một cách tận tình.
         </p>

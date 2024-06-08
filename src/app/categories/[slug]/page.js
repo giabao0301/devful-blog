@@ -1,6 +1,6 @@
-import { allBlogs } from "@/.contentlayer/generated";
-import BlogLayoutThree from "@/src/components/Blog/BlogLayoutThree";
-import Categories from "@/src/components/Blog/Categories";
+import { allBlogs } from "../../../../.contentlayer/generated";
+import BlogLayoutThree from "../../../components/Blog/BlogLayoutThree";
+import Categories from "../../../components/Blog/Categories";
 import GithubSlugger, { slug } from "github-slugger";
 import NotFound from "../../not-found";
 

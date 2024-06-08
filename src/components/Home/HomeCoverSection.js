@@ -1,4 +1,4 @@
-import { sortBlogs } from '@/src/utils'
+import { sortBlogs } from '../../utils'
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
