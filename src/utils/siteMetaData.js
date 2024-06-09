@@ -1,8 +1,8 @@
 // please update required information
 const siteMetadata = {
-  title: "Devful Blog - Lập trình, công nghệ và cuộc sống",
+  title: "Devful Service - Hỗ trợ và dịch vụ máy tính",
   author: "Gia Bao",
-  headerTitle: "Devful Blog - Lập trình, công nghệ và cuộc sống",
+  headerTitle: "Devful Service - Hỗ trợ và dịch vụ máy tính",
   description:
     "Blog cá nhân của Devful nơi chia sẻ kiến thức về lập trình, công nghệ và cuộc sống. Khám phá ngay các bài viết chất lượng về lập trình từ cơ bản đến nâng cao. Hãy bắt đầu hành trình của bạn ngay hôm nay cùng Devful!",
   language: "vi_VN",
@@ -13,7 +13,7 @@ const siteMetadata = {
   email: "trinhpao246@gmail.com",
   github: "https://github.com/giabao0301",
   twitter: "https://twitter.com/",
-  facebook: "https://facebook.com",
+  facebook: "https://www.facebook.com/profile.php?id=61559608993543",
   youtube: "https://youtube.com/",
   linkedin: "https://www.linkedin.com/in/bao-trinh-a9352728b/",
   locale: "vi_VN",
