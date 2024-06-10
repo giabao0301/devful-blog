@@ -112,7 +112,7 @@ export default function BlogPage({ params }) {
               className="px-6 text-sm py-2"
             />
             <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
-              {blog.title}
+              {blog.title + ' - Devful'}
             </h1>
           </div>
           <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
@@ -120,7 +120,8 @@ export default function BlogPage({ params }) {
             src={blog.image.filePath.replace("../public", "")}
             placeholder="blur"
             blurDataURL={blog.image.blurhashDataUrl}
-            alt={blog.title}
+            alt={blog.title + ' - Devful'}
+            title={blog.title + ' - Devful'}
             width={blog.image.width}
             height={blog.image.height}
             className="aspect-square w-full h-full object-cover object-center"

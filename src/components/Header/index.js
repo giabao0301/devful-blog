@@ -10,6 +10,7 @@ import {
   SunIcon,
   TwitterIcon,
   YoutubeIcon,
+  GmailIcon,
 } from "../Icons";
 import siteMetadata from "../../utils/siteMetaData";
 import { useState } from "react";
@@ -133,13 +134,13 @@ const Header = () => {
           <GithubIcon className="  hover:scale-125 transition-all ease duration-200 dark:fill-light" />
         </a>
         <a
-          href={siteMetadata.youtube}
+          href={siteMetadata.gmail}
           rel="noopener noreferrer"
-          className="inline-block w-8 h-8 mr-4"
-          aria-label="Check my profile on Youtube"
+          className="inline-block w-7 h-7 mr-4"
+          aria-label="Reach out to me via Gmail"
           target="_blank"
         >
-          <YoutubeIcon className="hover:scale-125 transition-all ease duration-200" />
+          <GmailIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
       </div>
     </header>

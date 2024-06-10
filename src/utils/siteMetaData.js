@@ -1,10 +1,10 @@
 // please update required information
-const siteMetadata = {
-  title: "Devful Service - Hỗ trợ và dịch vụ máy tính",
-  author: "Gia Bao",
-  headerTitle: "Devful Service - Hỗ trợ và dịch vụ máy tính",
+  const siteMetadata = {
+    title: "Devful Service - Hỗ trợ và dịch vụ máy tính",
+    author: "Gia Bao",
+    headerTitle: "Devful Service - Hỗ trợ và dịch vụ máy tính",
   description:
-    "Blog cá nhân của Devful nơi chia sẻ kiến thức về lập trình, công nghệ và cuộc sống. Khám phá ngay các bài viết chất lượng về lập trình từ cơ bản đến nâng cao. Hãy bắt đầu hành trình của bạn ngay hôm nay cùng Devful!",
+    "Devful Service nơi chuyên cung cấp dịch vụ hỗ trợ tư vấn về công nghệ lập trình và sửa chữa, nâng cấp máy tính uy tín tại TP.HCM. Đội ngũ kỹ thuật viên giàu kinh nghiệm, đảm bảo giải quyết mọi vấn đề về công nghệ, phần cứng, phần mềm và bảo mật cho máy tính của bạn. Liên hệ ngay để được tư vấn và hỗ trợ miễn phí!",
   language: "vi_VN",
   theme: "system", // system, dark or light
   siteUrl: "https://devful-blog.vercel.app/", // your website URL

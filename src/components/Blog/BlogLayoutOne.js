@@ -16,7 +16,8 @@ const BlogLayoutOne = ({ blog }) => {
         src={blog.image.filePath.replace("../public", "")}
         placeholder="blur"
         blurDataURL={blog.image.blurhashDataUrl}
-        alt={blog.title}
+        alt={blog.title + ' - Devful'}
+        title={blog.title + ' - Devful'}
         width={blog.image.width}
         height={blog.image.height}
         className="w-full h-full object-center object-cover rounded-xl group-hover:scale-105 transition-all ease duration-300"
@@ -33,7 +34,7 @@ const BlogLayoutOne = ({ blog }) => {
               className="bg-gradient-to-r from-accent to-accent bg-[length:0px_6px] dark:from-accentDark/50 dark:to-accentDark/50
                 group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 "
             >
-              {blog.title}
+              {blog.title + ' - Devful'}
             </span>
           </h2>
         </Link>

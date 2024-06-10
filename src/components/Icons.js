@@ -281,6 +281,7 @@ export const DribbbleIcon = ({ className, ...rest }) => {
     </svg>
   );
 };
+
 export const FacebookIcon = ({ className, ...rest }) => {
   return (
     <svg
@@ -304,6 +305,7 @@ export const FacebookIcon = ({ className, ...rest }) => {
     </svg>
   );
 };
+
 export const YoutubeIcon = ({ className, ...rest }) => {
   return (
     <svg
@@ -321,6 +323,26 @@ export const YoutubeIcon = ({ className, ...rest }) => {
         d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"
       ></path>
       <path fill="#FFF" d="M20 31L20 17 32 24z"></path>
+    </svg>
+  );
+};
+
+export const GmailIcon = ({ className, ...rest }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="24"
+      height="26"
+      viewBox="0 0 48 48"
+      {...rest}
+      className={cx("w-full h-auto", className)}
+    >
+      <path
+        fill="#D44638"
+        d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+      ></path>
     </svg>
   );
 };
