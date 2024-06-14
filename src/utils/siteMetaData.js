@@ -3,6 +3,16 @@
     title: "Devful Service - Hỗ trợ và dịch vụ máy tính",
     author: "Gia Bao",
     headerTitle: "Devful Service - Hỗ trợ và dịch vụ máy tính",
+    keywords: [
+      "Devful",
+      "Devful Service",
+      "Hỗ trợ và dịch vụ máy tính",
+      "Hỗ trợ máy tính",
+      "Dịch vụ máy tính",   
+      "Sửa chữa máy tính",
+      "Nâng cấp máy tính",
+      "Tư vấn công nghệ",
+    ],
   description:
     "Devful Service nơi chuyên cung cấp dịch vụ hỗ trợ tư vấn về công nghệ lập trình và sửa chữa, nâng cấp máy tính uy tín tại TP.HCM. Đội ngũ kỹ thuật viên giàu kinh nghiệm, đảm bảo giải quyết mọi vấn đề về công nghệ, phần cứng, phần mềm và bảo mật cho máy tính của bạn. Liên hệ ngay để được tư vấn và hỗ trợ miễn phí!",
   language: "vi_VN",
