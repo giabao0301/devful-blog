@@ -91,7 +91,7 @@ const Footer = () => {
       </div>
     </div>
 
-    <div className="mt-28">
+    <div className="md:mt-28 mt-14 flex flex-col items-center md:items-start">
       <h4 className="font-semibold dark:font-bold text-xl mb-2">Thông tin liên hệ</h4>
       <p>Email: devful@gmail.com</p>
       <p>Hotline: +84 93 512 68 68</p>
@@ -100,7 +100,7 @@ const Footer = () => {
     </div>
     </section> 
 
-      <div className="w-full  mt-16 md:mt-24 relative font-medium  py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
+      <div className="w-full mt-16 md:mt-24 relative font-medium  py-6 px-8 flex  flex-col md:flex-row items-center justify-between">
         <span className="text-center">
           &copy;2024 Devful. All rights reserved.
         </span>
